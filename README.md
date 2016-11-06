@@ -1,9 +1,9 @@
 # vueAdmin
-基于 [vuejs](http://vuejs.org/) , [element](http://element.eleme.io/#/) 搭建一个后台管理界面
+a simple admin portal based on [vuejs](http://vuejs.org/) and [element](http://element.eleme.io/#/).
 
 ### Usage
 
-这个项目是使用[vue-cli](https://github.com/vuejs/vue-cli)生成
+This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ``` bash
 $ npm install
