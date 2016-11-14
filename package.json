@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "nprogress": "^0.2.0",
-    "vue": "^2.0.1"
+    "vue": "^2.0.1",
+    "vuex": "^2.0.0-rc.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -23,7 +24,7 @@
     "chalk": "^1.1.3",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.25.0",
-    "element-ui": "^1.0.0-rc.8",
+    "element-ui": "^1.0.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -43,7 +44,7 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
-    "webpack-merge": "^0.14.1"
+    "webpack-merge": "^0.16.0"
   },
   "engines": {
     "node": ">= 4.0.0",

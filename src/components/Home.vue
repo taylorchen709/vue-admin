@@ -15,7 +15,7 @@
 			<aside style="width:230px;">
 				<h5 class="admin">欢迎系统管理员：测试</h5>
 				<el-menu style="border-top: 1px solid #475669;" default-active="/page1" class="el-menu-vertical-demo" @open="handleopen"
-					@close="handleclose" @select="handleselect" theme="dark" unique-opened="true" router="true">
+					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
 					<el-submenu index="1">
 						<template slot="title"><i class="el-icon-message"></i>导航一</template>
 						<el-menu-item index="/page1">页面1</el-menu-item>
@@ -36,11 +36,11 @@
 			<section class="panel-c-c">
 				<div class="grid-content bg-purple-light">
 					<el-col :span="24" style="margin-bottom:15px;">
-						<strong style="width:200px;float:left;color: #475669;">{{$store.state.currentPathName}}</strong>
+						<strong style="width:200px;float:left;color: #475669;">{{currentPathName}}</strong>
 						<el-breadcrumb separator="/" style="float:right;">
 							<el-breadcrumb-item :to="{ path: '/page1' }">首页</el-breadcrumb-item>
-							<el-breadcrumb-item>{{$store.state.currentPathNameParent}}</el-breadcrumb-item>
-							<el-breadcrumb-item>{{$store.state.currentPathName}}</el-breadcrumb-item>
+							<el-breadcrumb-item>{{currentPathNameParent}}</el-breadcrumb-item>
+							<el-breadcrumb-item>{{currentPathName}}</el-breadcrumb-item>
 						</el-breadcrumb>
 					</el-col>
 					<el-col :span="24" style="background-color:#fff;box-sizing: border-box;">
@@ -59,6 +59,8 @@
   export default {
     data() {
       return {
+		  currentPathName:'导航一',
+		  currentPathNameParent:'页面一',
         form: {
           name: '',
           region: '',
@@ -71,19 +73,23 @@
         }
       }
     },
+	watch: {
+		'$route' (to, from) {//监听路由改变
+			this.currentPathName=to.name;
+			this.currentPathNameParent=to.matched[0].name;
+		}
+	},
     methods: {
       onSubmit() {
         console.log('submit!');
       },
 			handleopen(){
-				console.log('handleopen');
+				//console.log('handleopen');
 			},
 			handleclose(){
-				console.log('handleclose');
+				//console.log('handleclose');
 			},
             handleselect:function(a,b){
-                    console.log(a);
-                     console.log(b);
             },
 			//退出登录
 			logout:function(){

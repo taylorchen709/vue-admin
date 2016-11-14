@@ -3,7 +3,7 @@ import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
-import store from './store/config'
+import store from './vuex/store'
 import Vuex from 'vuex'
 import NProgress from 'nprogress'//页面顶部进度条
 import 'nprogress/nprogress.css'
@@ -50,29 +50,19 @@ const routes = [
     component: Home,
     name: '导航三',
     children: [
-      { path: '/page6', component: Page4, name: '' }
+      { path: '/page6', component: Page6, name: '' }
     ]
   }
 ]
 
 const router = new VueRouter({
-  routes // （缩写）相当于 routes: routes
+  routes
 })
 
 router.beforeEach((to, from, next) => {
-  // to 和 from 都是 路由信息对象
-  console.log(to);
-  console.log(from);
-  store.state.currentPathNameParent = to.matched[0].name;
-  store.state.currentPathName = to.name;
-  //store.commit('setCurrentPath',to.path);
   NProgress.start();
   next()
 })
-
-// router.beforeEach(transition => {
-//   NProgress.done();
-// });
 
 router.afterEach(transition => {
   NProgress.done();
@@ -84,6 +74,7 @@ new Vue({
   router,
   store,
   components: { App }
+  //render: h => h(Login)
 }).$mount('#app')
 
 router.replace('/login')

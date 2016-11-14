@@ -18,25 +18,17 @@
 				</el-form-item>
 			</el-form>
 		</el-col>
-		<el-table :data="tableData" style="width: 100%" border>
-			<el-table-column type="selection" width="50">
+
+		<el-table :data="tableData" style="width: 100%">
+			<el-table-column prop="date" label="日期" width="180">
 			</el-table-column>
-			<el-table-column prop="name" label="姓名" width="150">
-			</el-table-column>
-			<el-table-column prop="sex" label="性别" width="150">
-			</el-table-column>
-			<el-table-column prop="age" label="年龄" width="150">
+			<el-table-column prop="name" label="姓名" width="180">
 			</el-table-column>
 			<el-table-column prop="address" label="地址">
 			</el-table-column>
-			<el-table-column prop="date" label="日期" width="150">
-			</el-table-column>
-			<el-table-column inline-template label="操作" width="80">
-				<el-button type="text" size="small">编辑</el-button>
-			</el-table-column>
 		</el-table>
+
 		<el-col :span="24" class="toolbar" style="padding-bottom:10px;">
-			<el-button>删除</el-button>
 			<el-pagination :current-page="5" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper"
 				:total="400" style="float:right">
 			</el-pagination>
@@ -57,98 +49,24 @@
           }
         },
 				value1:'',
-				tableData: [{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
-          },{
-            date: '2016-05-02',
-            name: 'CHEN',
-            age: '50',
-            sex: '男',
-            address: '1231321321321321'
+        tableData: [{
+            date: '2016-11-02',
+            name: '123456',
+            address: '123456'
+          }, {
+            date: '2016-11-02',
+            name: '123456',
+            address: '123456'
+          }, {
+            date: '2016-11-02',
+            name: '123456',
+            address: '123456'
+          }, {
+            date: '2016-11-02',
+            name: '123456',
+            address: '123456'
           }]
-      }
+     }
     },
     methods: {
     }
