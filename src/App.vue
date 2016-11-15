@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style>
+	@import "./assets/font-awesome-4.7.0/css/font-awesome.min.css";
 	.bounce-enter-active {
 		animation: bounce-in .5s;
 	}
@@ -65,5 +66,15 @@ export default {
 		top: 0px;
 		bottom: 0px;
 		width: 100%;
+	}
+	
+	.el-submenu [class^=fa] {
+		vertical-align: baseline;
+		margin-right: 10px;
+	}
+	
+	.el-menu-item [class^=fa] {
+		vertical-align: baseline;
+		margin-right: 10px;
 	}
 </style>

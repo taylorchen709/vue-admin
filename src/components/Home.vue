@@ -5,15 +5,16 @@
 				<img src="../assets/logo4.png" class="logo"> <span>AD<i style="color:#20a0ff">MIN</i></span>
 			</el-col>
 			<el-col :span="4">
-				<el-tooltip class="item tip-logout" effect="dark" content="退出" placement="bottom">
-					<i class="logout" v-on:click="logout"></i>
+				<el-tooltip class="item tip-logout" effect="dark" content="退出" placement="bottom" style="padding:0px;">
+					<!--<i class="logout" v-on:click="logout"></i>-->
+					<i class="fa fa-sign-out" aria-hidden="true" v-on:click="logout"></i>
 				</el-tooltip>
 			</el-col>
 		</el-col>
 		<el-col :span="24" class="panel-center">
 			<!--<el-col :span="4">-->
 			<aside style="width:230px;">
-				<h5 class="admin">欢迎系统管理员：测试</h5>
+				<h5 class="admin"><i class="fa fa-user" aria-hidden="true" style="margin-right:5px;"></i>欢迎系统管理员：测试</h5>
 				<el-menu style="border-top: 1px solid #475669;" default-active="/page1" class="el-menu-vertical-demo" @open="handleopen"
 					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
 					<el-submenu index="1">
@@ -23,11 +24,11 @@
 						<el-menu-item index="/page3">页面3</el-menu-item>
 					</el-submenu>
 					<el-submenu index="2">
-						<template slot="title"><i class="el-icon-message"></i>导航二</template>
+						<template slot="title"><i class="fa fa-id-card-o"></i>导航二</template>
 						<el-menu-item index="/page4">选项4</el-menu-item>
 						<el-menu-item index="/page5">选项5</el-menu-item>
 					</el-submenu>
-					<el-menu-item index="/page6"><i class="el-icon-setting"></i>导航三</el-menu-item>
+					<el-menu-item index="/page6"><i class="fa fa-line-chart"></i>导航三</el-menu-item>
 
 				</el-menu>
 			</aside>
