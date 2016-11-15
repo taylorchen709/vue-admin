@@ -1,5 +1,5 @@
 # vueAdmin
-a simple admin portal based on [vuejs](http://vuejs.org/) and [element](http://element.eleme.io/#/).
+a simple admin portal based on [vuejs2](http://vuejs.org/) and [element](http://element.eleme.io/#/).
 
 ### Usage
 
