@@ -96,12 +96,12 @@
 			logout:function(){
 				var _this=this;
 				this.$confirm('确认退出吗?', '提示', {
-          type: 'warning'
-        }).then(() => {
-          _this.$router.replace('/login');
-        }).catch(() => {
-                    
-        });
+					type: 'warning'
+				}).then(() => {
+					_this.$router.replace('/login');
+				}).catch(() => {
+							
+				});
 
 				
 			}
