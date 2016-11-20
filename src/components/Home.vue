@@ -15,12 +15,12 @@
 			<!--<el-col :span="4">-->
 			<aside style="width:230px;">
 				<h5 class="admin"><i class="fa fa-user" aria-hidden="true" style="margin-right:5px;"></i>欢迎系统管理员：测试</h5>
-				<el-menu style="border-top: 1px solid #475669;" default-active="/page1" class="el-menu-vertical-demo" @open="handleopen"
+				<el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo" @open="handleopen"
 					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
 					<el-submenu index="1">
 						<template slot="title"><i class="el-icon-message"></i>导航一</template>
-						<el-menu-item index="/page1">页面1</el-menu-item>
-						<el-menu-item index="/page2">页面2</el-menu-item>
+						<el-menu-item index="/table">Table</el-menu-item>
+						<el-menu-item index="/form">Form</el-menu-item>
 						<el-menu-item index="/page3">页面3</el-menu-item>
 					</el-submenu>
 					<el-submenu index="2">
@@ -39,7 +39,7 @@
 					<el-col :span="24" style="margin-bottom:15px;">
 						<strong style="width:200px;float:left;color: #475669;">{{currentPathName}}</strong>
 						<el-breadcrumb separator="/" style="float:right;">
-							<el-breadcrumb-item :to="{ path: '/page1' }">首页</el-breadcrumb-item>
+							<el-breadcrumb-item :to="{ path: '/table' }">首页</el-breadcrumb-item>
 							<el-breadcrumb-item>{{currentPathNameParent}}</el-breadcrumb-item>
 							<el-breadcrumb-item>{{currentPathName}}</el-breadcrumb-item>
 						</el-breadcrumb>
@@ -60,8 +60,8 @@
   export default {
     data() {
       return {
-		  currentPathName:'导航一',
-		  currentPathNameParent:'页面一',
+		  currentPathName:'Table',
+		  currentPathNameParent:'导航一',
         form: {
           name: '',
           region: '',
@@ -96,7 +96,7 @@
 			logout:function(){
 				var _this=this;
 				this.$confirm('确认退出吗?', '提示', {
-					type: 'warning'
+					//type: 'warning'
 				}).then(() => {
 					_this.$router.replace('/login');
 				}).catch(() => {
