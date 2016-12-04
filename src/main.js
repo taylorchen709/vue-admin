@@ -23,14 +23,19 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 const routes = [
-  { path: '/login', component: Login },
+  {
+    path: '/login',
+    component: Login,
+    hidden: true//不显示在导航中
+  },
   //{ path: '/main', component: Main },
   {
     path: '/',
     component: Home,
     name: '导航一',
+    iconCls: 'el-icon-message',//图标样式class
     children: [
-      { path: '/main', component: Main },
+      //{ path: '/main', component: Main },
       { path: '/table', component: Table, name: 'Table' },
       { path: '/form', component: Form, name: 'Form' },
       { path: '/page3', component: Page3, name: '页面3' },
@@ -40,6 +45,7 @@ const routes = [
     path: '/',
     component: Home,
     name: '导航二',
+    iconCls: 'fa fa-id-card-o',
     children: [
       { path: '/page4', component: Page4, name: '页面4' },
       { path: '/page5', component: Page5, name: '页面5' }
@@ -48,9 +54,11 @@ const routes = [
   {
     path: '/',
     component: Home,
-    name: '导航三',
+    name: '',
+    iconCls: 'fa fa-line-chart',
+    leaf: true,//只有一个节点
     children: [
-      { path: '/page6', component: Page6, name: '' }
+      { path: '/page6', component: Page6, name: '导航三' }
     ]
   }
 ]

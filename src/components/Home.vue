@@ -15,7 +15,7 @@
 			<!--<el-col :span="4">-->
 			<aside style="width:230px;">
 				<h5 class="admin"><i class="fa fa-user" aria-hidden="true" style="margin-right:5px;"></i>欢迎系统管理员：测试</h5>
-				<el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo" @open="handleopen"
+				<!--<el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo" @open="handleopen"
 					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
 					<el-submenu index="1">
 						<template slot="title"><i class="el-icon-message"></i>导航一</template>
@@ -29,7 +29,16 @@
 						<el-menu-item index="/page5">选项5</el-menu-item>
 					</el-submenu>
 					<el-menu-item index="/page6"><i class="fa fa-line-chart"></i>导航三</el-menu-item>
-
+				</el-menu>-->
+				<el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo" @open="handleopen"
+					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
+					<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
+						<el-submenu :index="index+''" v-if="!item.leaf">
+							<template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
+							<el-menu-item v-for="child in item.children" :index="child.path">{{child.name}}</el-menu-item>
+						</el-submenu>
+						<el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i :class="item.iconCls"></i>{{item.children[0].name}}</el-menu-item>
+					</template>
 				</el-menu>
 			</aside>
 			<!--</el-col>-->
@@ -40,8 +49,8 @@
 						<strong style="width:200px;float:left;color: #475669;">{{currentPathName}}</strong>
 						<el-breadcrumb separator="/" style="float:right;">
 							<el-breadcrumb-item :to="{ path: '/table' }">首页</el-breadcrumb-item>
-							<el-breadcrumb-item>{{currentPathNameParent}}</el-breadcrumb-item>
-							<el-breadcrumb-item>{{currentPathName}}</el-breadcrumb-item>
+							<el-breadcrumb-item v-if="currentPathNameParent!=''">{{currentPathNameParent}}</el-breadcrumb-item>
+							<el-breadcrumb-item v-if="currentPathName!=''">{{currentPathName}}</el-breadcrumb-item>
 						</el-breadcrumb>
 					</el-col>
 					<el-col :span="24" style="background-color:#fff;box-sizing: border-box;">
