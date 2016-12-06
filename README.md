@@ -17,6 +17,10 @@ npm run build
 
 ```
 
+### Browser Support
+
+Modern browsers and Internet Explorer 10+.
+
 ### snapshots
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/login.png)
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/main.png)
