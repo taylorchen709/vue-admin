@@ -18,6 +18,7 @@ import Page3 from './components/nav1/Page3.vue'
 import Page4 from './components/nav2/Page4.vue'
 import Page5 from './components/nav2/Page5.vue'
 import Page6 from './components/nav3/Page6.vue'
+import echarts from './components/charts/echarts.vue'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
@@ -56,10 +57,19 @@ const routes = [
     path: '/',
     component: Home,
     name: '',
-    iconCls: 'fa fa-line-chart',
+    iconCls: 'fa fa-address-card',
     leaf: true,//只有一个节点
     children: [
       { path: '/page6', component: Page6, name: '导航三' }
+    ]
+  },
+  {
+    path: '/',
+    component: Home,
+    name: 'Charts',
+    iconCls: 'fa fa-bar-chart',
+    children: [
+      { path: '/echarts', component: echarts, name: 'echarts' }
     ]
   }
 ]

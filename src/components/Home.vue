@@ -180,6 +180,9 @@
 		float: right;
 		margin-right: 20px;
 		padding-top: 5px;
+	}
+	
+	.tip-logout i {
 		cursor: pointer;
 	}
 	
