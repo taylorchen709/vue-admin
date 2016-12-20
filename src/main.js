@@ -96,6 +96,5 @@ new Vue({
   //render: h => h(Login)
 }).$mount('#app')
 
-router.replace('/login')
-
+//router.replace('/login')
 
