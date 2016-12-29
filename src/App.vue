@@ -1,21 +1,21 @@
 <template>
 	<div id="app">
-		<transition name="bounce">
+		<!--<transition name="bounce">-->
 			<router-view></router-view>
-		</transition>
+		<!--</transition>-->
 	</div>
 </template>
 
 <script>
 
-export default {
-  name: 'app',
-  components: {
-  },
-  created:function(){
-	  this.$router.replace('/login')
-  }
-}
+	export default {
+		name: 'app',
+		components: {
+		},
+		created: function () {
+			this.$router.replace('/login')
+		}
+	}
 </script>
 
 <style>
@@ -52,6 +52,16 @@ export default {
 			transform: scale(0);
 		}
 	}
+
+
+
+	.fade-enter-active, .fade-leave-active {
+		transition: opacity .5s
+	}
+	.fade-enter, .fade-leave-active {
+		opacity: 0
+	}
+
 	
 	body {
 		/*background-color: #324057;*/

@@ -13,6 +13,9 @@
             <el-col :span="12">
                 <div id="chartPie" style="width:100%; height:400px;"></div>
             </el-col>
+            <el-col :span="24">
+                <a href="http://echarts.baidu.com/examples.html" target="_blank" style="float: right;">more>></a>
+            </el-col>
         </el-row>
     </section>
 </template>

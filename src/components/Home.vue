@@ -54,9 +54,9 @@
 						</el-breadcrumb>
 					</el-col>
 					<el-col :span="24" style="background-color:#fff;box-sizing: border-box;">
-						<transition name="fade">
+						<!--<transition name="fade">-->
 							<router-view></router-view>
-						</transition>
+						<!--</transition>-->
 					</el-col>
 				</div>
 			</section>
