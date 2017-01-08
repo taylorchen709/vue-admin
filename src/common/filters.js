@@ -1,0 +1,1 @@
+/** * Created by Administrator on 2017/1/8. */import Vue from 'vue';Vue.filter('pagesSlice',function () {    return function (items, pi,siz) {        if (items === undefined || (!items instanceof Array))            return [];        if (pi == undefined) return items;        siz=siz||10;        return items.slice((pi - 1) * siz, pi * siz);    };});

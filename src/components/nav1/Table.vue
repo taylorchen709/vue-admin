@@ -14,7 +14,6 @@
 				</el-form-item>
 			</el-form>
 		</el-col>
-
 		<!--列表-->
 		<template>
 			<el-table :data="tableData" highlight-current-row v-loading="listLoading" style="width: 100%;">
@@ -41,10 +40,16 @@
 
 		<!--分页-->
 		<el-col :span="24" class="toolbar" style="padding-bottom:10px;">
-			<el-pagination :current-page="1" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper"
-				:total="400" style="float:right">
+			<el-pagination
+					:current-page="tableMeta.currentPage"
+					:page-sizes="tableMeta.pageSize"
+					:page-size="tableMeta.pageSize[0]"
+					:total="tableData.length"
+					layout="total, sizes, prev, pager, next, jumper"
+					style="float:right">
 			</el-pagination>
 		</el-col>
+
 
 		<!--编辑界面-->
 		<el-dialog :title="editFormTtile" v-model="editFormVisible" :close-on-click-modal="false">
@@ -82,11 +87,16 @@
 
 <script>
 	import util from '../../common/util'
-	import NProgress from 'nprogress'
+	import NProgress from 'nprogress';
+	import _ from 'lodash';
 
   export default {
     data() {
       return {
+      			tableMeta: {
+      			   currentPage:1,
+      			   pageSize:[20,100,200,500,1000]
+      			},
 				formInline: {
 					user: ''
 				},
@@ -100,12 +110,6 @@
 				editFormTtile:'编辑',//编辑界面标题
 				//编辑界面数据
 				editForm: {
-					id:0,
-					name: '',
-					sex: -1,
-					age: 0,
-					birth: '',
-					addr: ''
 				},
 				editLoading:false,
 				btnEditText:'提 交',
@@ -119,50 +123,8 @@
 					name: 'lanqy1',
 					sex: 1,
 					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
-				}, {
-					id:1001,
-					name: 'lanqy2',
-					sex: 1,
-					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
-				}, {
-					id:1002,
-					name: 'lanqy3',
-					sex: 0,
-					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
-				}, {
-					id:1003,
-					name: 'lanqy4',
-					sex: 1,
-					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
-				}, {
-					id:1004,
-					name: 'lanqy5',
-					sex: 1,
-					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
-				}, {
-					id:1005,
-					name: 'lanqy6',
-					sex: 1,
-					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
-				}, {
-					id:1006,
-					name: 'lanqy7',
-					sex: 1,
-					age: 20,
-					birth:'1996-03-02',
-					addr:'广东广州天河体育中心'
+					birth:'2016-03-02',
+					addr:'武汉体院'
 				}, {
 					id:1007,
 					name: 'lanqy8',
@@ -200,7 +162,6 @@
 									message: '删除成功',
 									type: 'success'
 								});
-
 								break;
 							}
 						}
@@ -213,17 +174,13 @@
 			handleEdit:function(row){
 				this.editFormVisible=true;
 				this.editFormTtile='编辑';
-				this.editForm.id=row.id;
-				this.editForm.name=row.name;
-				this.editForm.sex=row.sex;
-				this.editForm.age=row.age;
-				this.editForm.birth=row.birth;
-				this.editForm.addr=row.addr;
+				this.editForm ={};
+				_.extend(this.editForm,row);
+
 			},
 			//编辑 or 新增
 			editSubmit:function(){
 				var _this=this;
-
 				_this.$refs.editForm.validate((valid)=>{
 					if(valid){
 						
@@ -275,17 +232,10 @@
 			},
 			//显示新增界面
 			handleAdd:function(){
-				var _this=this;
-
 				this.editFormVisible=true;
 				this.editFormTtile='新增';
-				
-				this.editForm.id=0;
-				this.editForm.name='';
-				this.editForm.sex=1;
-				this.editForm.age=0;
-				this.editForm.birth='';
-				this.editForm.addr='';
+				this.editForm ={};
+				_.extend(this.editForm ,{id:0,name:'',sex:1,age:0,birth:'',addr:''});
 			}
     }
   }

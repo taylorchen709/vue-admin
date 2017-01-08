@@ -18,8 +18,6 @@ export default {
         return context == null || context == "" || context == "undefined" ? "" : context;
     },
     formatDate: {
-
-
         format: function (date, pattern) {
             pattern = pattern || DEFAULT_PATTERN;
             return pattern.replace(SIGN_REGEXP, function ($0) {

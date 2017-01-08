@@ -9,6 +9,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "echarts": "^3.3.2",
     "flex.css": "^1.1.6",
     "nprogress": "^0.2.0",

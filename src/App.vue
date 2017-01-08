@@ -13,7 +13,7 @@
 		components: {
 		},
 		created: function () {
-			this.$router.replace('/login')
+			this.$router.replace('/table')
 		}
 	}
 </script>
