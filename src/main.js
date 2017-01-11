@@ -1,99 +1,76 @@
 import babelpolyfill from 'babel-polyfill'
+//require('babel-polyfill');
+
+
+//核心
 import Vue from 'vue'
-import App from './App'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
-import store from './vuex/store'
 import Vuex from 'vuex'
+import store from './vuex/store' //引入vuex中的store
+
+//第三方库
+import VueResource from 'vue-resource';
+
+//第三方UI
+import ElementUI from 'element-ui' //UI框架,同bootstrap
+import 'element-ui/lib/theme-default/index.css'
 import NProgress from 'nprogress'//页面顶部进度条
 import 'nprogress/nprogress.css'
 
-import Login from './components/Login.vue'
-import Home from './components/Home.vue'
-import Main from './components/Main.vue'
-import Table from './components/nav1/Table.vue'
-import Form from './components/nav1/Form.vue'
-import Page3 from './components/nav1/Page3.vue'
-import Page4 from './components/nav2/Page4.vue'
-import Page5 from './components/nav2/Page5.vue'
-import Page6 from './components/nav3/Page6.vue'
-import echarts from './components/charts/echarts.vue'
+//应用主组件
 
-Vue.use(ElementUI)
-Vue.use(VueRouter)
-Vue.use(Vuex)
+/*
+import Axios from 'axios';
+Vue.$http = Axios;
+// Vue.http.options.root = 'https://10.36.111.213/api';
+// Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
+Axios.defaults.baseURL = 'https://10.36.111.213/api';
+Axios.defaults.headers.common.Accept = 'application/json';
+Axios.defaults.headers.common.contentType = 'application/json';
+Axios.defaults.headers.common['Authorization'] = 'dafdfdafafsfas';
+Axios.defaults.withCredentials = false;
 
-const routes = [
-  {
-    path: '/login',
-    component: Login,
-    hidden: true//不显示在导航中
-  },
-  //{ path: '/main', component: Main },
-  {
-    path: '/',
-    component: Home,
-    name: '导航一',
-    iconCls: 'el-icon-message',//图标样式class
-    children: [
-      //{ path: '/main', component: Main },
-      { path: '/table', component: Table, name: 'Table' },
-      { path: '/form', component: Form, name: 'Form' },
-      { path: '/page3', component: Page3, name: '页面3' },
-    ]
-  },
-  {
-    path: '/',
-    component: Home,
-    name: '导航二',
-    iconCls: 'fa fa-id-card-o',
-    children: [
-      { path: '/page4', component: Page4, name: '页面4' },
-      { path: '/page5', component: Page5, name: '页面5' }
-    ]
-  },
-  {
-    path: '/',
-    component: Home,
-    name: '',
-    iconCls: 'fa fa-address-card',
-    leaf: true,//只有一个节点
-    children: [
-      { path: '/page6', component: Page6, name: '导航三' }
-    ]
-  },
-  {
-    path: '/',
-    component: Home,
-    name: 'Charts',
-    iconCls: 'fa fa-bar-chart',
-    children: [
-      { path: '/echarts', component: echarts, name: 'echarts' }
-    ]
-  }
-]
+Axios.interceptors.response.use(
+    response => response,
+    (error) => {
+        console.log(error)
+        if (error.response.status === 401) {
+
+        }
+    });
+*/
+
+//初始化
+Vue.use(VueResource);
+Vue.use(ElementUI);
+Vue.use(VueRouter);
+Vue.use(Vuex);
+
+import App from './App.vue' //引入主组件,主模板只包含了router-view
+import {routes} from './routes'
+
+
 
 const router = new VueRouter({
-  routes
+    routes
 })
-
+console.log(router.options)
 router.beforeEach((to, from, next) => {
-  NProgress.start();
-  next()
+    NProgress.start();
+    next()
 })
 
 router.afterEach(transition => {
-  NProgress.done();
+    NProgress.done();
 });
 
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  router,
-  store,
-  components: { App }
-  //render: h => h(Login)
+    el: '#app',
+    template: '<App/>',
+    router,
+    store,
+    components: {App}
+    //render: h => h(Login)
 }).$mount('#app')
 
 //router.replace('/login')

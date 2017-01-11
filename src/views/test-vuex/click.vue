@@ -7,7 +7,7 @@
 	</div>
 </template>
 
-<script>
+<script lang=babel>
 import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
 
