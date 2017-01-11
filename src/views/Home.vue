@@ -16,7 +16,7 @@
             <aside style="width:230px;">
                 <h5 class="admin"><i class="fa fa-user" aria-hidden="true" style="margin-right:5px;"></i>欢迎系统管理员：测试</h5>
 
-                <el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo"
+                <!--<el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo"
                          @open="handleopen"
                          @close="handleclose" @select="handleselect" theme="dark" unique-opened router>
 					<el-submenu index="1">
