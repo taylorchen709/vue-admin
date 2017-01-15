@@ -30,7 +30,7 @@
 					</el-submenu>
 					<el-menu-item index="/page6"><i class="fa fa-line-chart"></i>导航三</el-menu-item>
 				</el-menu>-->
-				<el-menu style="border-top: 1px solid #475669;" default-active="/table" class="el-menu-vertical-demo" @open="handleopen"
+				<el-menu style="border-top: 1px solid #475669;" :default-active="currentPath" class="el-menu-vertical-demo" @open="handleopen"
 					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
 					<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
 						<el-submenu :index="index+''" v-if="!item.leaf">
@@ -69,6 +69,7 @@
   export default {
     data() {
       return {
+		  currentPath: '/table',
 		  currentPathName:'Table',
 		  currentPathNameParent:'导航一',
         form: {
@@ -85,6 +86,7 @@
     },
 	watch: {
 		'$route' (to, from) {//监听路由改变
+			this.currentPath=to.path;
 			this.currentPathName=to.name;
 			this.currentPathNameParent=to.matched[0].name;
 		}
