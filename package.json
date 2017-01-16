@@ -13,9 +13,12 @@
     "echarts": "^3.3.2",
     "flex.css": "^1.1.6",
     "nprogress": "^0.2.0",
+    "oidc-token-manager": "^1.2.0",
+    "restful.js": "^0.9.6",
     "vue": "^2.0.7",
     "vue-resource": "^1.0.3",
-    "vuex": "^2.0.0-rc.6"
+    "vuex": "^2.0.0-rc.6",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

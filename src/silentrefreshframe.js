@@ -1,0 +1,1 @@
+/** * Created by Administrator on 2017/1/16. */import 'oidc-token-manager';var mgr = new OidcTokenManager();mgr.processTokenCallbackSilent();

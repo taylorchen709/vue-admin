@@ -12,7 +12,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 module.exports = merge(baseWebpackConfig, {
   module: {
-    loaders: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
+    loaders: utils.styleLoaders({sourceMap: config.dev.cssSourceMap})
   },
   // eval-source-map is faster for development
   devtool: '#eval-source-map',
@@ -25,9 +25,26 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
+    // new CommonsChunkPlugin({
+    //   filename: "../node_modules/oidc",
+    //   name: "oidcmgr"
+    // })
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      chunks: ['app'],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'callback.html',
+      template: 'callback.html',
+      chunks: ['callback'],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'silentrefreshframe.html',
+      template: 'silentrefreshframe.html',
+      chunks: ['silentrefreshframe'],
       inject: true
     })
   ]

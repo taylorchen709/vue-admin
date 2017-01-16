@@ -12,7 +12,10 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    callback: './src/callback.js',
+    silentfreshframe: './src/silentrefreshframe.js',
+    //vendor:['',''] 在vendor中定义的公共库,不同于node-modules在CommonsChunkPlugin插件中定义的vendor,这里主要用于代码分割
   },
   output: {
     path: config.build.assetsRoot,
@@ -67,7 +70,7 @@ module.exports = {
     ]
   },
   vue: {
-    loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
+    loaders: utils.cssLoaders({sourceMap: useCssSourceMap}),
     postcss: [
       require('autoprefixer')({
         browsers: ['last 2 versions']

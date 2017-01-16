@@ -90,12 +90,16 @@
     import _ from 'lodash';
     export default {
         mounted(){
-            this.$http.get('https://10.36.111.213/api/vue_man?format=json').then((payload) => {
-                //console.log(payload.data)
-                this.tableData = payload.data;
+            console.log('========',_.clone(this.$http.defaults.headers));
+            var ath='handler/212';
+            var free = 'vue_man';
+            this.$http.get(ath).then((payload) => {
+                console.log('payload',payload.data)
+                this.tableData = [[payload.data]];
+
                 util.deepInTranWithDateObject(this.tableData,'yyyy-MM-dd')
             }).catch(error => {
-                console.log(error)
+                console.log('line-error',error)
 
             })
         },

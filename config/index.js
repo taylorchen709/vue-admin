@@ -5,6 +5,8 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
+    callback: path.resolve(__dirname, '../dist/callback.html'),
+    silentfreshframe: path.resolve(__dirname, '../dist/silentrefreshframe.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

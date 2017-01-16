@@ -10,13 +10,13 @@ var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
-    loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
+    loaders: utils.styleLoaders({sourceMap: config.build.productionSourceMap, extract: true})
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath('js/[name].[chunk].js'),
+    chunkFilename: utils.assetsPath('js/[id].chunk.js')
   },
   vue: {
     loaders: utils.cssLoaders({
@@ -29,11 +29,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // extract css into its own file
     new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
@@ -44,19 +44,52 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: config.build.index,
       template: 'index.html',
       inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
+      chunks: ['app','manifest','vendor'],
+      // minify: {
+      //   removeComments: true,
+      //   collapseWhitespace: true,
+      //   removeAttributeQuotes: true
+      //   // more options:
+      //   // https://github.com/kangax/html-minifier#options-quick-reference
+      // },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    new HtmlWebpackPlugin({
+        filename: config.build.callback,
+        template: 'callback.html',
+        inject: true,
+        chunks: ['callback','manifest','vendor'],
+        // minify: {
+        //   removeComments: true,
+        //   collapseWhitespace: true,
+        //   removeAttributeQuotes: true
+        //   // more options:
+        //   // https://github.com/kangax/html-minifier#options-quick-reference
+        // },
+        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency'
+      }),
+    new HtmlWebpackPlugin({
+        filename: config.build.silentfreshframe,
+        template: 'silentrefreshframe.html',
+        inject: true,
+        chunks: ['silentrefreshframe','manifest','vendor'],
+        // minify: {
+        //   removeComments: true,
+        //   collapseWhitespace: true,
+        //   removeAttributeQuotes: true
+        //   // more options:
+        //   // https://github.com/kangax/html-minifier#options-quick-reference
+        // },
+        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency'
+      }
+    ),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+      //如果模块属于node-modules那么,压缩成minChunks,否则会杂交代码
       minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
         return (
@@ -79,7 +112,6 @@ var webpackConfig = merge(baseWebpackConfig, {
 
 if (config.build.productionGzip) {
   var CompressionWebpackPlugin = require('compression-webpack-plugin')
-
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
