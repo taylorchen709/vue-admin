@@ -2,7 +2,7 @@
 	<section>
 		<!--工具条-->
 		<el-col :span="24" class="toolbar">
-			<el-form :inline="true" :model="formInline" class="demo-form-inline">
+			<el-form :inline="true" :model="formInline">
 				<el-form-item>
 					<el-input v-model="formInline.user" placeholder="姓名"></el-input>
 				</el-form-item>
@@ -292,12 +292,4 @@
 </script>
 
 <style scoped>
-	.toolbar .el-form-item {
-		margin-bottom: 10px;
-	}
-	
-	.toolbar {
-		background: #fff;
-		padding: 10px 10px 0px 10px;
-	}
 </style>

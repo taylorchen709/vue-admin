@@ -14,7 +14,7 @@ import Home from './pages/Home.vue'
 import Main from './pages/Main.vue'
 import Table from './pages/nav1/Table.vue'
 import Form from './pages/nav1/Form.vue'
-import Page3 from './pages/nav1/Page3.vue'
+import user from './pages/nav1/user.vue'
 import Page4 from './pages/nav2/Page4.vue'
 import Page5 from './pages/nav2/Page5.vue'
 import Page6 from './pages/nav3/Page6.vue'
@@ -44,7 +44,7 @@ const routes = [
       //{ path: '/main', component: Main },
       { path: '/table', component: Table, name: 'Table' },
       { path: '/form', component: Form, name: 'Form' },
-      { path: '/page3', component: Page3, name: '页面3' },
+      { path: '/user', component: user, name: '列表' },
     ]
   },
   {

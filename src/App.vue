@@ -91,4 +91,13 @@
 		vertical-align: baseline;
 		margin-right: 10px;
 	}
+
+	.toolbar .el-form-item {
+		margin-bottom: 10px;
+	}
+	
+	.toolbar {
+		background: #fff;
+		padding: 10px 10px 0px 10px;
+	}
 </style>

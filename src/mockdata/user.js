@@ -8,18 +8,18 @@ const LoginUsers = [
   }
 ];
 
-// const Users = [];
-// const userCount = 200;
+const Users = [];
+const userCount = 8;
 
-// for (let i = 0; i < userCount; i++) {
-//   Users.push(Mock.mock({
-//     id: Mock.Random.guid(),
-//     name: Mock.Random.cname(),
-//     address: Mock.mock('@county(true)'),
-//     'age|18-60': 1,
-//     date: Number(Mock.Random.datetime('T'))
-//   }));
-// }
+for (let i = 0; i < userCount; i++) {
+  Users.push(Mock.mock({
+    id: Mock.Random.guid(),
+    name: Mock.Random.cname(),
+    addr: Mock.mock('@county(true)'),
+    'age|18-60': 1,
+    birth: Mock.Random.date(),
+    sex: Mock.Random.integer(0, 1)
+  }));
+}
 
-//export { LoginUsers, Users };
-export { LoginUsers };
+export { LoginUsers, Users };
