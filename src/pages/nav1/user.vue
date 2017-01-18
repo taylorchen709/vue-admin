@@ -7,7 +7,7 @@
 					<el-input v-model="filters.name" placeholder="姓名"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button v-on:click="getUser">查询</el-button>
+					<el-button type="primary" v-on:click="getUser">查询</el-button>
 				</el-form-item>
 			</el-form>
 		</el-col>
@@ -15,7 +15,7 @@
 		<!--列表-->
 		<template>
 			<el-table :data="users" highlight-current-row v-loading="loading" style="width: 100%;">
-<el-table-column type="index" width="50">
+<el-table-column type="index" width="60">
 </el-table-column>
 <el-table-column prop="name" label="姓名" width="180" sortable>
 </el-table-column>
@@ -34,6 +34,7 @@
 </template>
 <script>
 	import { getUserList } from '../../api/api';
+	import NProgress from 'nprogress'
 	export default {
 		data() {
 			return {
@@ -56,9 +57,11 @@
 					name: this.filters.name
 				};
 				this.loading = true;
+				NProgress.start();
 				getUserList(para).then((res) => {
 					this.users = res.data.users;
 					this.loading = false;
+					NProgress.done();
 				});
 			}
 		},
