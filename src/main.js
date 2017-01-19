@@ -28,6 +28,8 @@ Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
+NProgress.configure({ showSpinner: false });
+
 const routes = [
   {
     path: '/login',

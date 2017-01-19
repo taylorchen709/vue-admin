@@ -4,7 +4,8 @@ const LoginUsers = [
     id: 1,
     username: 'admin',
     password: '123456',
-    avatar: ''
+    avatar: '',
+    name: '张某某'
   }
 ];
 
