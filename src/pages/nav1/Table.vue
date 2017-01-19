@@ -20,17 +20,17 @@
 			<el-table :data="users" highlight-current-row v-loading="listLoading" style="width: 100%;">
 <el-table-column type="index" width="60">
 </el-table-column>
-<el-table-column prop="name" label="姓名" width="180" sortable>
+<el-table-column prop="name" label="姓名" width="120" sortable>
 </el-table-column>
 <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
 </el-table-column>
 <el-table-column prop="age" label="年龄" width="100" sortable>
 </el-table-column>
-<el-table-column prop="birth" label="生日" width="180" sortable>
+<el-table-column prop="birth" label="生日" width="120" sortable>
 </el-table-column>
-<el-table-column prop="addr" label="地址" sortable>
+<el-table-column prop="addr" label="地址" min-width="180" sortable>
 </el-table-column>
-<el-table-column inline-template :context="_self" label="操作" width="140">
+<el-table-column inline-template :context="_self" label="操作" width="150">
 	<span>
 					<el-button size="small" @click="handleEdit(row)">编辑</el-button>
 					<el-button type="danger" size="small" @click="handleDel(row)">删除</el-button>

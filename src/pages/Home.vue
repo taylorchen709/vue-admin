@@ -157,14 +157,14 @@
 
 	.panel-top .rightbar{
 		text-align: right;
-		padding-right: 20px;
+		padding-right: 35px;
 	}
 
 	.panel-top .rightbar .head{
 		width: 40px;
     	height: 40px;
 		border-radius: 20px;
-		margin: 10px 15px;
+		margin: 10px 0px 10px 10px;
     	float: right;
 	}
 	
