@@ -12,9 +12,20 @@
 		name: 'app',
 		components: {
 		},
-		created: function () {
-			this.$router.replace('/login')
-		}
+		// beforeCreate: function () {
+		// 	let user = JSON.parse(localStorage.getItem('user'));
+		// 	if (!user) {
+		// 		this.$router.replace('/login')
+		// 	}
+		// }
+		watch: {
+			'$route'(to, from) {//监听路由改变
+				let user = JSON.parse(localStorage.getItem('user'));
+				if (!user) {
+					this.$router.replace('/login')
+				}
+			}
+		},
 	}
 </script>
 

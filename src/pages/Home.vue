@@ -94,13 +94,13 @@
 				}
 			}
 		},
-		watch: {
-			'$route'(to, from) {//监听路由改变
-				this.currentPath = to.path;
-				this.currentPathName = to.name;
-				this.currentPathNameParent = to.matched[0].name;
-			}
-		},
+		// watch: {
+		// 	'$route'(to, from) {//监听路由改变
+		// 		this.currentPath = to.path;
+		// 		this.currentPathName = to.name;
+		// 		this.currentPathNameParent = to.matched[0].name;
+		// 	}
+		// },
 		methods: {
 			onSubmit() {
 				console.log('submit!');
@@ -119,6 +119,7 @@
 				this.$confirm('确认退出吗?', '提示', {
 					//type: 'warning'
 				}).then(() => {
+					localStorage.removeItem('user');
 					_this.$router.replace('/login');
 				}).catch(() => {
 
@@ -126,6 +127,11 @@
 
 
 			}
+		},
+		mounted() {
+			this.currentPath = this.$route.path;
+			this.currentPathName = this.$route.name;
+			this.currentPathNameParent = this.$route.matched[0].name;
 		}
 	}
 </script>
