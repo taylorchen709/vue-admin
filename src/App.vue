@@ -3,17 +3,19 @@
 		<!--<transition name="bounce">-->
 			<router-view></router-view>
 		<!--</transition>-->
+		<h1>asdfjaskfja;k</h1>
+
 	</div>
+
 </template>
 
 <script lang="babel">
-
+	console.log('3-492934912382130-3299294293912219999000081231')
 	export default {
 		name: 'app',
-		components: {
-		},
-		created: function () {
-			this.$router.replace('/table')
+		mounted: function () {
+		  	console.log('--------------app.vue')
+			this.$router.replace('/test')
 		}
 	}
 </script>

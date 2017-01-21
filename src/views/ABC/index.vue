@@ -1,0 +1,1 @@
+<template>    <v-layout>    <div>        <div>this is abc body{{msg}}</div>    </div>    </v-layout></template><script lang=babel>    import Layout from '../shared/layout.vue'    export default{        data(){            return{                msg:'hello vue'            }        },        components:{          'v-layout':Layout        }    }</script>
