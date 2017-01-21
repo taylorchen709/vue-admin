@@ -4,53 +4,59 @@
             <el-col :span="20" style="font-size:26px;">
                 <img src="../../assets/logo4.png" class="logo"> <span>AD<i style="color:#20a0ff">MIN</i></span>
             </el-col>
+
+            <el-col>
+                <router-link :to="{ name: 'home.index' }" active-class="active" class="nav-item" tag="li">
+                    <a>Home</a>
+                </router-link>
+            </el-col>
+            <el-col>
+                <router-link :to="{ name: 'abc.index' }" active-class="active" class="nav-item" tag="li">
+                    <a>流程助手</a>
+                </router-link>
+            </el-col>
+            <el-col>
+                <el-tooltip class="item tip-logout" effect="dark" content="-退出-" placement="bottom"
+                            style="padding:0px;"
+                            v-if="!mgr.expired">
+                    <!--<i class="logout" v-on:click="logout"></i>-->
+                    <i class="fa fa-sign-out" aria-hidden="true"
+                       @click="mgr.redirectForLogout">退出{{mgr.profile}}</i>
+                </el-tooltip>
+                <!--<router-link :to="{ name: 'abc.index' }" active-class="active" class="nav-item" tag="li"-->
+                <!--v-if="!vm.mgr.expired" @click="mgr.redirectForLogout">-->
+                <!--<a>退出({{mgr.profile}}）</a>-->
+                <!--</router-link>-->
+                <router-link v-else>
+                    <a href="" @click="mgr.redirectForToken">登陆</a>
+                </router-link>
+            </el-col>
             <el-col :span="4">
-                <el-tooltip class="item tip-logout" effect="dark" content="退出" placement="bottom" style="padding:0px;">
+                <el-tooltip class="item tip-logout" effect="dark" content="退出" placement="bottom"
+                            style="padding:0px;">
                     <!--<i class="logout" v-on:click="logout"></i>-->
                     <i class="fa fa-sign-out" aria-hidden="true" @click="logout"></i>
                 </el-tooltip>
             </el-col>
         </el-col>
-        <router-view>
-
-
-        </router-view>
+        <slot></slot>
     </el-row>
-
 </template>
 
 <script lang=babel>
-
-
-    export default {
-
-        data() {
-            return {
-
-            }
-        },
-        watch: {
-            '$route' (to, from) {//监听路由改变
-                console.log('to-->from:',to,from)
-            }
-        },
-        methods: {
-
-            //退出登录
-            logout: function () {
-                var _this = this;
-                this.$confirm('确认退出吗?', '提示', {
-                    //type: 'warning'
-                }).then(() => {
-                    _this.$router.replace('/login');
-                }).catch(() => {
-
-                });
-
-
-            }
-        }
+  export default {
+    watch: {
+      '$route' (to, from) {//监听路由改变
+        console.log('to-->from:', to, from)
+      }
+    },
+    data(){
+      console.log('this.$oidcMgr:',this.$oidcMgr)
+      return {
+        mgr: this.$oidcMgr
+      }
     }
+  }
 </script>
 
 <style scoped>
