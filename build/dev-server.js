@@ -1,7 +1,11 @@
 require('./check-versions')()
 var config = require('../config')
-
-env.NODE_ENV ='"development"'
+if (!process.env.NODE_ENV) {
+  console.log('执行奇异的赋值,因为环境变量赋值setter会改变对象!')
+  process.env.NODE_ENV = config.dev.env
+}
+console.log('--env只在产品模式下赋值, 那么开发环境下的process.env.NODE_ENV是[object Object]其值:---',
+  config.dev.env,',检查config.dev.env==process.env.NODE_ENV?',process.env.NODE_ENV === config.dev.env);//并不相等
 
 var path = require('path')
 var express = require('express')

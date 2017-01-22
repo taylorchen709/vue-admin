@@ -1,7 +1,8 @@
 // https://github.com/shelljs/shelljs
 require('./check-versions')()
 require('shelljs/global')
-env.NODE_ENV = '"production"'
+console.log('!-----因为是入口文件,所以未初始化------!',env.NODE_ENV,'在产品模式下,env=process.env?',env===process.env)
+env.NODE_ENV = 'production'
 
 var path = require('path')
 var config = require('../config')

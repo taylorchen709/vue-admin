@@ -1,1 +1,1 @@
-/** * Created by Administrator on 2017/1/22. */
+module.exports = {  NODE_ENV: '"production"',  API_LOCATION: '"http://example.com/api/v1"',};

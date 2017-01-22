@@ -33,9 +33,9 @@ const appSettings = {
     STSauthority: "http://10.36.111.213/identity",
 };
 
-const post_logout_redirect_uri = window.location.protocol + "//" + window.location.host + "/post_handler.html?op=logout";
-const redirect_uri = window.location.protocol + "//" + window.location.host + "/post_handler.html?op=callback";
-const silent_redirect_uri = window.location.protocol + "//" + window.location.host + "/post_handler.html?op=silent_refresh";
+const post_logout_redirect_uri = window.location.protocol + "//" + window.location.host + "/posthandler.html?op=logout";
+const redirect_uri = window.location.protocol + "//" + window.location.host + "/posthandler.html?op=callback";
+const silent_redirect_uri = window.location.protocol + "//" + window.location.host + "/posthandler.html?op=silent_refresh";
 const oidcConfig = {
   client_id: appSettings.client_id,
   redirect_uri: redirect_uri,

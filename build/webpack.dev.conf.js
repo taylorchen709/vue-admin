@@ -31,23 +31,10 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new HtmlWebpackPlugin({
-      filename: 'post_handler.html',
-      template: 'post_handler.html',
-      chunks: ['post_handler'],
+      filename: 'posthandler.html',
+      template: 'posthandler.html',
+      chunks: ['posthandler'],
       inject: true
     })
   ]
-});
-
-// new HtmlWebpackPlugin({
-//   filename: 'callback.html',
-//   template: 'callback.html',
-//   chunks: ['callback'],
-//   inject: true
-// }),
-// new HtmlWebpackPlugin({
-//   filename: 'silentrefreshframe.html',
-//   template: 'silentrefreshframe.html',
-//   chunks: ['silentrefreshframe'],
-//   inject: true
-// })
+})

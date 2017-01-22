@@ -1,12 +1,13 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-
+console.log('shit...........!',path.resolve(__dirname, '../dist/index.html'))
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    callback: path.resolve(__dirname, '../dist/callback.html'),
-    silentfreshframe: path.resolve(__dirname, '../dist/silentrefreshframe.html'),
+    //应该把这个放入webpack.config.prod下面
+    // index: path.resolve(__dirname, '../dist/index.html'),
+    // callback: path.resolve(__dirname, '../dist/callback.html'),
+    // silentfreshframe: path.resolve(__dirname, '../dist/silentrefreshframe.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

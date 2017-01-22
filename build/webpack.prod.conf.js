@@ -6,6 +6,12 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var env = config.build.env
+
+
+function getBuildPath(htmlname) {
+  return path.resolve(__dirname, '../dist/'+htmlname)
+}
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -26,7 +32,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': config.build.env
+      'process.env': env
     }),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
@@ -40,17 +46,17 @@ var webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index,
+      filename: getBuildPath('index.html'),
       template: 'index.html',
       inject: true,
       chunks: ['app','manifest','vendor'],
       chunksSortMode: 'dependency'
     }),
     new HtmlWebpackPlugin({
-        filename: config.build.post_handler,
-        template: 'post_handler.html',
+        filename: getBuildPath('posthandler.html'),
+        template: 'posthandler.html',
         inject: true,
-        chunks: ['post_handler','manifest','vendor'],
+        chunks: ['posthandler','manifest','vendor'],
         chunksSortMode: 'dependency'
       }
     ),
@@ -96,44 +102,3 @@ if (config.build.productionGzip) {
 }
 
 module.exports = webpackConfig
-
-
-// minify: {
-//   removeComments: true,
-//   collapseWhitespace: true,
-//   removeAttributeQuotes: true
-//   // more options:
-//   // https://github.com/kangax/html-minifier#options-quick-reference
-// },
-// necessary to consistently work with multiple chunks via CommonsChunkPlugin
-// new HtmlWebpackPlugin({
-//     filename: config.build.callback,
-//     template: 'callback.html',
-//     inject: true,
-//     chunks: ['callback','manifest','vendor'],
-//     // minify: {
-//     //   removeComments: true,
-//     //   collapseWhitespace: true,
-//     //   removeAttributeQuotes: true
-//     //   // more options:
-//     //   // https://github.com/kangax/html-minifier#options-quick-reference
-//     // },
-//     // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-//     chunksSortMode: 'dependency'
-//   }),
-// new HtmlWebpackPlugin({
-//     filename: config.build.silentfreshframe,
-//     template: 'silentrefreshframe.html',
-//     inject: true,
-//     chunks: ['silentrefreshframe','manifest','vendor'],
-//     // minify: {
-//     //   removeComments: true,
-//     //   collapseWhitespace: true,
-//     //   removeAttributeQuotes: true
-//     //   // more options:
-//     //   // https://github.com/kangax/html-minifier#options-quick-reference
-//     // },
-//     // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-//     chunksSortMode: 'dependency'
-//   }
-// ),
