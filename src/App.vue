@@ -20,7 +20,7 @@
 		// }
 		watch: {
 			'$route'(to, from) {//监听路由改变
-				let user = JSON.parse(localStorage.getItem('user'));
+				let user = JSON.parse(sessionStorage.getItem('user'));
 				if (!user) {
 					this.$router.replace('/login')
 				}

@@ -86,10 +86,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  let user = JSON.parse(localStorage.getItem('user'));
-  console.log(user); console.log(to);
+  let user = JSON.parse(sessionStorage.getItem('user'));
   if (!user && to.path != '/login') {
-    console.log('lgout');
     next({ path: '/login' })
   }
   next()

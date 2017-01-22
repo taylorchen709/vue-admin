@@ -62,12 +62,8 @@
                   type: 'error'
                 });
               } else {
-                localStorage.setItem('user', JSON.stringify(user));
-                if (this.$route.query.redirect) {
-                  this.$router.push({ path: this.$route.query.redirect });
-                } else {
-                  this.$router.push({ path: '/table' });
-                }
+                sessionStorage.setItem('user', JSON.stringify(user));
+                this.$router.push({ path: '/table' });
               }
             });
           } else {
