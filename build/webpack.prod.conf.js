@@ -95,7 +95,7 @@ if (config.build.productionGzip) {
   )
 }
 
-module.exports = webpackConfig;
+module.exports = webpackConfig
 
 
 // minify: {

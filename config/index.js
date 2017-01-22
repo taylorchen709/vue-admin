@@ -3,9 +3,7 @@ var path = require('path')
 
 module.exports = {
   build: {
-    env: {
-      NODE_ENV:'"production"'
-    },
+    env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     callback: path.resolve(__dirname, '../dist/callback.html'),
     silentfreshframe: path.resolve(__dirname, '../dist/silentrefreshframe.html'),
@@ -21,9 +19,7 @@ module.exports = {
     productionGzipExtensions: ['js', 'css']
   },
   dev: {
-    env: {
-      NODE_ENV:'"development"'
-    },
+    env: require('./dev.env'),
     port: 8080,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

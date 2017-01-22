@@ -3,11 +3,11 @@ var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 
-var env = process.env.NODE_ENV;
+var runType = process.env.NODE_ENV;
 // check env & config/index.js to decide whether to enable CSS source maps for the
 // various preprocessor loaders added to vue-loader at the end of this file
-var cssSourceMapDev = (env === '"development"' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === '"production"' && config.build.productionSourceMap)
+var cssSourceMapDev = (runType === '"development"' && config.dev.cssSourceMap)
+var cssSourceMapProd = (runType === '"production"' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 //callback: './src/callback.js',

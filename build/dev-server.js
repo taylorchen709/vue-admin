@@ -1,6 +1,8 @@
 require('./check-versions')()
 var config = require('../config')
 
+env.NODE_ENV ='"development"'
+
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
