@@ -1,0 +1,1 @@
+/** * Created by Administrator on 2017/1/22. */import 'oidc-token-manager';console.log(window.location,window.location.search)

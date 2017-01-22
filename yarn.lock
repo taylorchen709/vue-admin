@@ -1993,6 +1993,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
+jsrsasign@^5.0.7:
+  version "5.1.0"
+  resolved "http://registry.npm.taobao.org/jsrsasign/download/jsrsasign-5.1.0.tgz#2549d559674f6f8956b12bd7f3b5c066b4e0c6ba"
+
 kind-of@^3.0.2:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/kind-of/download/kind-of-3.1.0.tgz#475d698a5e49ff5e53d14e3e732429dc8bf4cf47"
@@ -2441,6 +2445,12 @@ object.omit@^2.0.0:
   dependencies:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
+
+oidc-client@^1.2.2:
+  version "1.2.2"
+  resolved "http://registry.npm.taobao.org/oidc-client/download/oidc-client-1.2.2.tgz#baad1c90576cec5c9c14963b9e0dc2b7561c8058"
+  dependencies:
+    jsrsasign "^5.0.7"
 
 oidc-token-manager@^1.2.0:
   version "1.2.0"

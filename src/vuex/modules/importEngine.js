@@ -1,0 +1,1 @@
+/** * Created by Administrator on 2017/1/22. */export const muteTypes ={};const state ={};const getters = {};const actions={};const mutations={};export default {  state,  getters,  actions,  mutations};

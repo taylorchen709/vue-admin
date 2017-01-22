@@ -1,0 +1,1 @@
+/** * Created by Administrator on 2017/1/22. */export const namespaces= {  shared:'shared',  abc:'abc',  importEngine:'importEngine',  sqlApp:'sqlApp'}

@@ -1,12 +1,11 @@
 import babelpolyfill from 'babel-polyfill'
 //require('babel-polyfill');
 
-
 //核心
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-import store from './vuex/store' //引入vuex中的store
+import store,{muteTypes} from './vuex/index' //引入vuex中的store
 
 //第三方库
 // import VueResource from 'vue-resource';
@@ -34,9 +33,9 @@ const appSettings = {
     STSauthority: "http://10.36.111.213/identity",
 };
 
-const post_logout_redirect_uri = window.location.protocol + "//" + window.location.host + "/index.html";
-const redirect_uri = window.location.protocol + "//" + window.location.host + "/callback.html";
-const silent_redirect_uri = window.location.protocol + "//" + window.location.host + "/silentrefreshframe.html";
+const post_logout_redirect_uri = window.location.protocol + "//" + window.location.host + "/post_handler.html#logout";
+const redirect_uri = window.location.protocol + "//" + window.location.host + "/post_handler.html#callback";
+const silent_redirect_uri = window.location.protocol + "//" + window.location.host + "/post_handler.html#silent_refresh";
 const oidcConfig = {
   client_id: appSettings.client_id,
   redirect_uri: redirect_uri,
@@ -49,6 +48,11 @@ const oidcConfig = {
   with_credentials: false
   //acr_values: "2fa"
 };
+//import * as Oidc from 'oidc-client';
+//console.log('---Oidc---------',Oidc);
+// const mgr = new Oidc.OidcClient(oidcConfig);
+
+
 import 'oidc-token-manager';
 
 const mgr = new OidcTokenManager(oidcConfig);
@@ -56,23 +60,23 @@ const mgr = new OidcTokenManager(oidcConfig);
 Vue.prototype.$oidcMgr = mgr;
 
 instance.interceptors.request.use(function (cfg) {
-    // debugger;
-    // if the access token has expired, we need to redirect to the login page.过期了重新请求
+    debugger;
     if (mgr.expired) {
         debugger;
-        console.log('------------expired-------------')
+        console.log('------------访问令牌过期,重新访问-------------');
+        localStorage.setItem('last-route',vm.$route.path)
         mgr.redirectForToken();
     }
     //api服务的规则:如果是公共api应采用jsonp访问,否则必须鉴权
     if (cfg.url.indexOf(appSettings.tripGalleryAPI) === 0) {
-        debugger;
         console.log('---!---', cfg)
+        debugger;
         cfg.headers.Authorization = 'Bearer ' + mgr.access_token;
         console.log(cfg.headers.Authorization);
     }
     return cfg;
 }, function (error) {
-    console.log('errrrrrrrrrrrrrrrrrrrrrror:', error)
+    console.log(`--interceptors请求错误--`, error);
     return error;
 });
 
@@ -85,14 +89,20 @@ import {routes} from './routes.config.js'
 
 
 const router = new VueRouter({
-    routes
+    routes,
+    history: false,
+    saveScrollPosition: true,
+    transitionOnLoad: true
+
 });
-console.log(router.options)
+//console.log(router.options)
 router.beforeEach((to, from, next) => {
-    console.log('---12-12-1-2-12-1-2',to,from,next)
+    console.log('---路由切换---',from.path,'=>',to.path)
     NProgress.start();
+    //store.commit()
     next()
 });
+
 // import { sync } from 'vuex-router-sync'
 // Vue.router = router;
 // sync(store, router);
@@ -102,13 +112,12 @@ router.afterEach(transition => {
 });
 
 import App from './App.vue' //引入主组件,主模板只包含了router-view
-new Vue({
+const vm = new Vue({
     // el: '#app',
     //template: 'App',
     router,
     store,
-    component: App,
-    // render: h => h(App)
+    render :h => h(App) //当没指定模板时,必须指定render
 }).$mount('#app');
 
 

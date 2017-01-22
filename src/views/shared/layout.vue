@@ -1,64 +1,80 @@
 <template>
-    <el-row class="panel">
-        <el-col :span="24" class="panel-top">
-            <el-col :span="20" style="font-size:26px;">
-                <img src="../../assets/logo4.png" class="logo"> <span>AD<i style="color:#20a0ff">MIN</i></span>
-            </el-col>
+    <div>
+        <el-row class="panel-top">
+            <el-col :span="24" class="panel-top">
+                <el-col :span="4" style="font-size:26px;">
+                    <img src="../../assets/logo4.png" class="logo"> <span>企信<i style="color:yellow">外挂平台</i></span>
+                </el-col>
+                <el-col :span="4">
+                    <el-button type="text">
+                        <a href="/#/table"  class="nav-item">table</a>
+                    </el-button>
+                </el-col>
 
-            <el-col>
-                <router-link :to="{ name: 'home.index' }" active-class="active" class="nav-item" tag="li">
-                    <a>Home</a>
-                </router-link>
+                <el-col :span="2" v-if="!$oidcMgr.expired" :offset="12">
+                    <el-tooltip class="item tip-logout" effect="dark" content="-退出-" placement="bottom"
+                                style="padding:0px;">
+                        <!--<i class="logout" v-on:click="logout"></i>-->
+                        <i class="fa fa-sign-out" aria-hidden="true"
+                           @click="redirectForLogout">退出{{$oidcMgr.profile.given_name}}</i>
+                    </el-tooltip>
+                </el-col>
+                <el-col :span="2" v-else :offset="12">
+                    <el-tooltip class="item tip-login" effect="dark" content="-登陆-" placement="bottom"
+                                style="padding:0px;">
+
+                        <!--<i class="logout" v-on:click="logout"></i>-->
+                        <i class="fa fa-sign-in" aria-hidden="true"
+                           @click="redirectForToken">登陆!</i>
+                    </el-tooltip>
+                </el-col>
+                <!--<el-col :span="4">-->
+                <!--<el-tooltip class="item tip-logout" effect="dark" content="退出" placement="bottom"-->
+                <!--style="padding:0px;">-->
+                <!--&lt;!&ndash;<i class="logout" v-on:click="logout"></i>&ndash;&gt;-->
+                <!--<i class="fa fa-sign-out" aria-hidden="true" @click="logout"></i>-->
+                <!--</el-tooltip>-->
+                <!--</el-col>-->
             </el-col>
-            <el-col>
-                <router-link :to="{ name: 'abc.index' }" active-class="active" class="nav-item" tag="li">
-                    <a>流程助手</a>
-                </router-link>
-            </el-col>
-            <el-col>
-                <el-tooltip class="item tip-logout" effect="dark" content="-退出-" placement="bottom"
-                            style="padding:0px;"
-                            v-if="!mgr.expired">
-                    <!--<i class="logout" v-on:click="logout"></i>-->
-                    <i class="fa fa-sign-out" aria-hidden="true"
-                       @click="mgr.redirectForLogout">退出{{mgr.profile}}</i>
-                </el-tooltip>
-                <!--<router-link :to="{ name: 'abc.index' }" active-class="active" class="nav-item" tag="li"-->
-                <!--v-if="!vm.mgr.expired" @click="mgr.redirectForLogout">-->
-                <!--<a>退出({{mgr.profile}}）</a>-->
-                <!--</router-link>-->
-                <router-link v-else>
-                    <a href="" @click="mgr.redirectForToken">登陆</a>
-                </router-link>
-            </el-col>
-            <el-col :span="4">
-                <el-tooltip class="item tip-logout" effect="dark" content="退出" placement="bottom"
-                            style="padding:0px;">
-                    <!--<i class="logout" v-on:click="logout"></i>-->
-                    <i class="fa fa-sign-out" aria-hidden="true" @click="logout"></i>
-                </el-tooltip>
-            </el-col>
-        </el-col>
-        <slot></slot>
-    </el-row>
+        </el-row>
+        <el-row :span="24" class="panel-center">
+            <slot></slot>
+        </el-row>
+    </div>
+
 </template>
 
 <script lang=babel>
+  //import 'oidc-token-manager'
   export default {
-    watch: {
-      '$route' (to, from) {//监听路由改变
-        console.log('to-->from:', to, from)
+//    watch: {
+//      '$route' (to, from) {//监听路由改变
+//        console.log('layout::::::::::::::::to-->from:', to, from)
+//      }
+//    },
+    methods: {
+      redirectForLogout(){
+        this.$oidcMgr.redirectForLogout();
+      },
+      redirectForToken(){
+        this.$oidcMgr.redirectForToken();
       }
     },
-    data(){
-      console.log('this.$oidcMgr:',this.$oidcMgr)
-      return {
-        mgr: this.$oidcMgr
-      }
-    }
+//    mounted(){
+//      let ath = 'handler/212';
+//      let free = 'vue_man';
+//      this.$http.get(ath).then((payload) => {
+//        console.log('payload', payload.data)
+//        this.tableData = [[payload.data]];
+//        //util.deepInTranWithDateObject(this.tableData, 'yyyy-MM-dd')
+//      }).catch(error => {
+//        console.log('line-error', error)
+//
+//      })
+//    }
   }
-</script>
 
+</script>
 <style scoped>
     .fade-enter-active,
     .fade-leave-active {
@@ -78,18 +94,20 @@
     }
 
     .panel-top {
-        height: 60px;
-        line-height: 60px;
-        background: #1F2D3D;
+        height: 40px;
+        line-height: 40px;
+        background: #428bca;
+
         color: #c0ccda;
     }
 
     .panel-center {
-        background: #324057;
+
         position: absolute;
         top: 60px;
         bottom: 0px;
         overflow: hidden;
+        width:100%
     }
 
     .panel-c-c {
@@ -104,7 +122,7 @@
     }
 
     .logout {
-        background: url("../../assets/logout_36.png");
+        background: url(../../assets/logout_36.png);
         background-size: contain;
         width: 20px;
         height: 20px;

@@ -3,23 +3,26 @@ var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 
-var env = process.env.NODE_ENV
+var env = process.env.NODE_ENV;
 // check env & config/index.js to decide whether to enable CSS source maps for the
 // various preprocessor loaders added to vue-loader at the end of this file
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
+var cssSourceMapDev = (env === '"development"' && config.dev.cssSourceMap)
+var cssSourceMapProd = (env === '"production"' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+
+//callback: './src/callback.js',
+//silentfreshframe: './src/silentrefreshframe.js',
+//vendor:['',''] 在vendor中定义的公共库,不同于node-modules在CommonsChunkPlugin插件中定义的vendor,这里主要用于代码分割
+
 
 module.exports = {
   entry: {
     app: './src/main.js',
-    callback: './src/callback.js',
-    silentfreshframe: './src/silentrefreshframe.js',
-    //vendor:['',''] 在vendor中定义的公共库,不同于node-modules在CommonsChunkPlugin插件中定义的vendor,这里主要用于代码分割
+    post_handler: './src/post_handler.js',
   },
   output: {
     path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+    publicPath: process.env.NODE_ENV === '"production"' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     filename: '[name].js'
   },
   resolve: {

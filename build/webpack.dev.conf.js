@@ -24,11 +24,6 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
-    // new CommonsChunkPlugin({
-    //   filename: "../node_modules/oidc",
-    //   name: "oidcmgr"
-    // })
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -36,16 +31,23 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new HtmlWebpackPlugin({
-      filename: 'callback.html',
-      template: 'callback.html',
-      chunks: ['callback'],
-      inject: true
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'silentrefreshframe.html',
-      template: 'silentrefreshframe.html',
-      chunks: ['silentrefreshframe'],
+      filename: 'post_handler.html',
+      template: 'post_handler.html',
+      chunks: ['post_handler'],
       inject: true
     })
   ]
-})
+});
+
+// new HtmlWebpackPlugin({
+//   filename: 'callback.html',
+//   template: 'callback.html',
+//   chunks: ['callback'],
+//   inject: true
+// }),
+// new HtmlWebpackPlugin({
+//   filename: 'silentrefreshframe.html',
+//   template: 'silentrefreshframe.html',
+//   chunks: ['silentrefreshframe'],
+//   inject: true
+// })
