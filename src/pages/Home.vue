@@ -7,7 +7,7 @@
 </el-col>
 <el-col :span="4" class="rightbar">
 	<el-dropdown trigger="click">
-		<span class="el-dropdown-link" style="color:#c0ccda;cursor: pointer;"><img src="../assets/user.png" class="head"> 张某某
+		<span class="el-dropdown-link" style="color:#c0ccda;cursor: pointer;"><img :src="this.sysUserAvatar" class="head"> {{sysUserName}}
 </span>
 <el-dropdown-menu slot="dropdown">
 	<el-dropdown-item>我的消息</el-dropdown-item>
@@ -82,6 +82,8 @@
 				currentPath: '/table',
 				currentPathName: 'Table',
 				currentPathNameParent: '导航一',
+				sysUserName: '',
+				sysUserAvatar: '',
 				form: {
 					name: '',
 					region: '',
@@ -119,12 +121,25 @@
 				this.$confirm('确认退出吗?', '提示', {
 					//type: 'warning'
 				}).then(() => {
+					sessionStorage.removeItem('user');
 					_this.$router.replace('/login');
 				}).catch(() => {
 
 				});
 
 
+			}
+		},
+		mounted() {
+			this.currentPath = this.$route.path;
+			this.currentPathName = this.$route.name;
+			this.currentPathNameParent = this.$route.matched[0].name;
+
+			var user = sessionStorage.getItem('user');
+			if (user) {
+				user = JSON.parse(user);
+				this.sysUserName = user.name || '';
+				this.sysUserAvatar = user.avatar || '';
 			}
 		}
 	}
