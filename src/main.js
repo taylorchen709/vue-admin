@@ -1,14 +1,10 @@
-import babelpolyfill from 'babel-polyfill'
-//require('babel-polyfill');
-
+require('babel-polyfill');
 //核心
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import store,{muteTypes} from './vuex/index' //引入vuex中的store
 
-//第三方库
-// import VueResource from 'vue-resource';
 
 //第三方UI
 import ElementUI from 'element-ui' //UI框架,同bootstrap
@@ -53,8 +49,6 @@ router.afterEach(transition => {
 
 import App from './App.vue' //引入主组件,主模板只包含了router-view
 const vm = new Vue({
-    // el: '#app',
-    //template: 'App',
     router,
     store,
     render :h => h(App) //当没指定模板时,必须指定render
