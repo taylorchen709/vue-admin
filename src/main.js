@@ -19,81 +19,21 @@ import 'nprogress/nprogress.css'
 //应用主组件
 
 
-import Axios from 'axios';
-let instance;
+import {axiosInstance,oidcMgr } from './services';
 //如果全局使用,定义在原型上面
-Vue.prototype.$http = instance = Axios.create({
-    baseURL: 'https://10.36.111.213/api',
-    withCredentials: false
-});
-
-const appSettings = {
-    client_id: "tripgalleryimplicit",
-    tripGalleryAPI: "https://10.36.111.213/",
-    STSauthority: "http://10.36.111.213/identity",
-};
-
-const post_logout_redirect_uri = window.location.protocol + "//" + window.location.host + "/posthandler.html?op=logout";
-const redirect_uri = window.location.protocol + "//" + window.location.host + "/posthandler.html?op=callback";
-const silent_redirect_uri = window.location.protocol + "//" + window.location.host + "/posthandler.html?op=silent_refresh";
-const oidcConfig = {
-  client_id: appSettings.client_id,
-  redirect_uri: redirect_uri,
-  post_logout_redirect_uri: post_logout_redirect_uri,
-  response_type: "id_token token",
-  scope: "openid profile gallerymanagement",
-  authority: appSettings.STSauthority,
-  silent_redirect_uri: silent_redirect_uri,
-  silent_renew: true,
-  with_credentials: false
-  //acr_values: "2fa"
-};
-//import * as Oidc from 'oidc-client';
-//console.log('---Oidc---------',Oidc);
-// const mgr = new Oidc.OidcClient(oidcConfig);
-
-
-import 'oidc-token-manager';
-
-const mgr = new OidcTokenManager(oidcConfig);
-
-Vue.prototype.$oidcMgr = mgr;
-
-instance.interceptors.request.use(function (cfg) {
-    debugger;
-    if (mgr.expired) {
-        debugger;
-        console.log('------------访问令牌过期,重新访问-------------');
-        localStorage.setItem('last-route',vm.$route.path)
-        mgr.redirectForToken();
-    }
-    //api服务的规则:如果是公共api应采用jsonp访问,否则必须鉴权
-    if (cfg.url.indexOf(appSettings.tripGalleryAPI) === 0) {
-        console.log('---!---', cfg)
-        debugger;
-        cfg.headers.Authorization = 'Bearer ' + mgr.access_token;
-        console.log(cfg.headers.Authorization);
-    }
-    return cfg;
-}, function (error) {
-    console.log(`--interceptors请求错误--`, error);
-    return error;
-});
+Vue.prototype.$http = axiosInstance;
+Vue.prototype.$oidcMgr = oidcMgr;
 
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-
 import {routes} from './routes.config.js'
-
-
 const router = new VueRouter({
     routes,
     history: false,
     saveScrollPosition: true,
     transitionOnLoad: true
-
 });
 //console.log(router.options)
 router.beforeEach((to, from, next) => {
