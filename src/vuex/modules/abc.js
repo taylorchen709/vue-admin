@@ -1,1 +1,1 @@
-/** * Created by Administrator on 2017/1/22. */export const muteTypes ={};const state ={};const getters = {};const actions={};const mutations={};export default {  state,  getters,  actions,  mutations};
+/** * Created by Administrator on 2017/1/22. */export const muteTypes ={  filtercos:'filtercos'};const state ={};const getters = {};const actions={  filtercos(state,payload){    console.log('new code:abc.state',state,payload);  }};const mutations={};export default {  state,  getters,  actions,  mutations};
