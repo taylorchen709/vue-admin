@@ -1755,10 +1755,6 @@ ieee754@^1.1.4:
   version "1.1.8"
   resolved "http://registry.npm.taobao.org/ieee754/download/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
-immutable@3.7.6:
-  version "3.7.6"
-  resolved "http://registry.npm.taobao.org/immutable/download/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
-
 indexes-of@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/indexes-of/download/indexes-of-1.0.1.tgz#f30f716c8e2bd346c7b67d3df3915566a7c05607"
@@ -1992,10 +1988,6 @@ jsprim@^1.2.2:
     extsprintf "1.0.2"
     json-schema "0.2.3"
     verror "1.3.6"
-
-jsrsasign@^5.0.7:
-  version "5.1.0"
-  resolved "http://registry.npm.taobao.org/jsrsasign/download/jsrsasign-5.1.0.tgz#2549d559674f6f8956b12bd7f3b5c066b4e0c6ba"
 
 kind-of@^3.0.2:
   version "3.1.0"
@@ -2431,10 +2423,6 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "http://registry.npm.taobao.org/oauth-sign/download/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
-object-assign@2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-2.0.0.tgz#f8309b09083b01261ece3ef7373f2b57b8dd7042"
-
 object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
@@ -2445,12 +2433,6 @@ object.omit@^2.0.0:
   dependencies:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
-
-oidc-client@^1.2.2:
-  version "1.2.2"
-  resolved "http://registry.npm.taobao.org/oidc-client/download/oidc-client-1.2.2.tgz#baad1c90576cec5c9c14963b9e0dc2b7561c8058"
-  dependencies:
-    jsrsasign "^5.0.7"
 
 oidc-token-manager@^1.2.0:
   version "1.2.0"
@@ -2867,10 +2849,6 @@ q@^1.1.2:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/q/download/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
-qs@5.2.0:
-  version "5.2.0"
-  resolved "http://registry.npm.taobao.org/qs/download/qs-5.2.0.tgz#a9f31142af468cb72b25b30136ba2456834916be"
-
 qs@6.2.0:
   version "6.2.0"
   resolved "http://registry.npm.taobao.org/qs/download/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
@@ -3085,15 +3063,6 @@ requires-port@1.x.x:
 resolve@^1.1.6:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/resolve/download/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
-
-restful.js@^0.9.6:
-  version "0.9.6"
-  resolved "http://registry.npm.taobao.org/restful.js/download/restful.js-0.9.6.tgz#426c398f2939a988b5b5f15fead6ef953ea1381a"
-  dependencies:
-    immutable "3.7.6"
-    object-assign "2.0.0"
-    qs "5.2.0"
-    warning "2.1.0"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
@@ -3551,12 +3520,6 @@ vuex@^2.0.0-rc.6:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/vuex/download/vuex-2.1.1.tgz#78463ee45fae4871c5d05177b4e8cedd9e2cbccc"
 
-warning@2.1.0:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/warning/download/warning-2.1.0.tgz#21220d9c63afc77a8c92111e011af705ce0c6901"
-  dependencies:
-    loose-envify "^1.0.0"
-
 watchpack@^0.2.1:
   version "0.2.9"
   resolved "http://registry.npm.taobao.org/watchpack/download/watchpack-0.2.9.tgz#62eaa4ab5e5ba35fdfc018275626e3c0f5e3fb0b"
@@ -3625,10 +3588,6 @@ webpack@^1.13.2:
     uglify-js "~2.7.3"
     watchpack "^0.2.1"
     webpack-core "~0.6.9"
-
-whatwg-fetch@^2.0.1:
-  version "2.0.1"
-  resolved "http://registry.npm.taobao.org/whatwg-fetch/download/whatwg-fetch-2.0.1.tgz#078b9461bbe91cea73cbce8bb122a05f9e92b772"
 
 whet.extend@~0.9.9:
   version "0.9.9"
