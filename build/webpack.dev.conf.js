@@ -35,6 +35,12 @@ module.exports = merge(baseWebpackConfig, {
       template: 'posthandler.html',
       chunks: ['posthandler'],
       inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'elm.html',
+      template: 'elm.html',
+      chunks: ['elm'],
+      inject: true
     })
   ]
 })

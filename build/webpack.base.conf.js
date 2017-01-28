@@ -20,6 +20,7 @@ module.exports = {
   entry: {
     app: './src/main.js',
     posthandler: './src/posthandler.js',
+    elm: './src/elm-main.js',
   },
   output: {
     path: config.build.assetsRoot,

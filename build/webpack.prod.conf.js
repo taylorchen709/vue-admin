@@ -53,6 +53,13 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     new HtmlWebpackPlugin({
+      filename: getBuildPath('elm.html'),
+      template: 'elm.html',
+      inject: true,
+      chunks: ['elm','manifest','vendor'],
+      chunksSortMode: 'dependency'
+    }),
+    new HtmlWebpackPlugin({
         filename: getBuildPath('posthandler.html'),
         template: 'posthandler.html',
         inject: true,
