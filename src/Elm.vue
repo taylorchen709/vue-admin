@@ -1,0 +1,1 @@
+<template>    <div>      <div></div>    </div></template><style lang="stylus" rel="stylesheet/stylus"></style><script lang=babel>    export default{    }</script>
