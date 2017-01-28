@@ -11,7 +11,7 @@
 </template>
 
 <script lang="babel">
-  import Layout from './views/shared/layout.vue'
+  import Layout from './pages/shared/layout.vue'
   export default {
     name: 'app',
     created: function () {

@@ -4,10 +4,12 @@
       <w>filtercos</w>
       <w>gallerymanagement</w>
       <w>jsonp</w>
+      <w>nbrs</w>
       <w>oidc</w>
       <w>oidcmgr</w>
       <w>postcss</w>
       <w>posthandler</w>
+      <w>showco</w>
       <w>silentfreshframe</w>
       <w>silentrefreshframe</w>
       <w>tripgalleryimplicit</w>

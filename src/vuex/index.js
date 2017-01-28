@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import shared,{muteTypes as share_muteTypes} from './modules/__shared'
-import abc,{muteTypes as abc_MuteTypes} from './modules/abc'
-import importEngine,{muteTypes as ie_MuteTypes} from './modules/importEngine'
-import sqlApp,{muteTypes as sa_MuteTypes} from './modules/sqlApp'
+import shared,{interacts as inters_shared} from './modules/__shared'
+import abc,{interacts as inters_abc} from './modules/abc'
+import importEngine,{interacts as inters_imp} from './modules/importEngine'
+import sqlApp,{interacts as inters_sql_app} from './modules/sqlApp'
 
 import createLogger from './plugins/logger';
 
-export const muteTypes = {
-  abc:abc_MuteTypes,
-  sqlApp:sa_MuteTypes,
-  importEngine:ie_MuteTypes,
-  shared:share_muteTypes
+export const interacts = {
+  abc:inters_abc,
+  sqlApp:inters_sql_app,
+  importEngine:inters_imp,
+  shared:inters_shared
 };
 
 Vue.use(Vuex)
