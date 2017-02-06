@@ -1,4 +1,5 @@
 import Login from './pages/Login.vue'
+import NotFound from './pages/404.vue'
 import Home from './pages/Home.vue'
 import Main from './pages/Main.vue'
 import Table from './pages/nav1/Table.vue'
@@ -13,7 +14,14 @@ let routes = [
     {
         path: '/login',
         component: Login,
-        hidden: true//不显示在导航中
+        name: '',
+        hidden: true
+    },
+    {
+        path: '/404',
+        component: NotFound,
+        name: '',
+        hidden: true
     },
     //{ path: '/main', component: Main },
     {
@@ -22,7 +30,7 @@ let routes = [
         name: '导航一',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            //{ path: '/main', component: Main },
+            { path: '/main', component: Main, name: '主页', hidden: true },
             { path: '/table', component: Table, name: 'Table' },
             { path: '/form', component: Form, name: 'Form' },
             { path: '/user', component: user, name: '列表' },
@@ -56,6 +64,11 @@ let routes = [
         children: [
             { path: '/echarts', component: echarts, name: 'echarts' }
         ]
+    },
+    {
+        path: '*',
+        hidden: true,
+        redirect: { path: '/404' }
     }
 ];
 

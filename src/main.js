@@ -9,8 +9,6 @@ import Vuex from 'vuex'
 import NProgress from 'nprogress'//页面顶部进度条
 import 'nprogress/nprogress.css'
 import routes from './routes'
-
-// start mock
 import Mock from './mock';
 Mock.bootstrap();
 
@@ -25,17 +23,21 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
+  //NProgress.start();
+  if (to.path == '/login') {
+    sessionStorage.removeItem('user');
+  }
   let user = JSON.parse(sessionStorage.getItem('user'));
   if (!user && to.path != '/login') {
     next({ path: '/login' })
+  } else {
+    next()
   }
-  next()
 })
 
-router.afterEach(transition => {
-  NProgress.done();
-});
+//router.afterEach(transition => {
+//NProgress.done();
+//});
 
 new Vue({
   el: '#app',
