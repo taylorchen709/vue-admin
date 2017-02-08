@@ -26,5 +26,7 @@ Modern browsers and Internet Explorer 10+.
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/main.png)
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/edit.jpg)
 
-### wechat group
+### wechat group（加不进时请扫我）
 ![image](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/code.jpg)
+![image](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/mywechatid.jpg)
+
