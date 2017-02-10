@@ -25,3 +25,7 @@ Modern browsers and Internet Explorer 10+.
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/login.png)
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/main.png)
 ![image](https://github.com/taylorchen709/vueAdmin/blob/master/screenshots/edit.jpg)
+
+### License
+
+[MIT](http://opensource.org/licenses/MIT)
