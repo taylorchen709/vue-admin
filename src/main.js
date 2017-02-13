@@ -9,8 +9,9 @@ import Vuex from 'vuex'
 import NProgress from 'nprogress'//页面顶部进度条
 import 'nprogress/nprogress.css'
 import routes from './routes'
-import Mock from './mock';
+import Mock from './mock'
 Mock.bootstrap();
+import 'font-awesome/css/font-awesome.min.css'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
@@ -40,13 +41,11 @@ router.beforeEach((to, from, next) => {
 //});
 
 new Vue({
-  el: '#app',
-  template: '<App/>',
+  //el: '#app',
+  //template: '<App/>',
   router,
   store,
-  components: { App }
-  //render: h => h(Login)
+  //components: { App }
+  render: h => h(App)
 }).$mount('#app')
-
-//router.replace('/login')
 

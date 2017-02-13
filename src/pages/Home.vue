@@ -1,8 +1,8 @@
 <template>
 	<el-row class="panel">
 		<el-col :span="24" class="panel-top">
-			<el-col :span="20" style="font-size:26px;">
-				<img src="../assets/logo4.png" class="logo"> <span>AD<i style="color:#20a0ff">MIN</i>
+			<el-col :span="20" style="font-size:22px;">
+				<img src="../assets/logo4.png" class="logo"> <span>VUE<i style="color:#20a0ff">ADMIN</i>
 </span>
 			</el-col>
 			<el-col :span="4" class="rightbar">
@@ -44,9 +44,9 @@
 						</el-breadcrumb>
 					</el-col>
 					<el-col :span="24" style="background-color:#fff;box-sizing: border-box;">
-						<!--<transition name="fade">-->
-						<router-view></router-view>
-						<!--</transition>-->
+						<transition>
+							<router-view></router-view>
+						</transition>
 					</el-col>
 				</div>
 			</section>
@@ -113,16 +113,6 @@
 </script>
 
 <style scoped>
-	.fade-enter-active,
-	.fade-leave-active {
-		transition: opacity .5s
-	}
-	
-	.fade-enter,
-	.fade-leave-active {
-		opacity: 0
-	}
-	
 	.panel {
 		position: absolute;
 		top: 0px;

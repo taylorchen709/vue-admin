@@ -39,7 +39,7 @@ export default {
           } else {
             resolve([200, { code: 500, msg: '账号或密码错误' }]);
           }
-        }, 500);
+        }, 1000);
       });
     });
 
@@ -55,7 +55,7 @@ export default {
           resolve([200, {
             users: mockUsers
           }]);
-        }, 500);
+        }, 1000);
       });
     });
 
@@ -74,7 +74,7 @@ export default {
             total: total,
             users: mockUsers
           }]);
-        }, 500);
+        }, 1000);
       });
     });
 

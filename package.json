@@ -1,9 +1,9 @@
 {
   "name": "vueadmin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "vue admin project",
   "author": "taylor <709161610@qq.com>",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js"
@@ -11,7 +11,6 @@
   "dependencies": {
     "axios": "^0.15.3",
     "echarts": "^3.3.2",
-    "flex.css": "^1.1.6",
     "nprogress": "^0.2.0",
     "vue": "^2.1.10",
     "vuex": "^2.0.0-rc.6"
