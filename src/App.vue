@@ -13,16 +13,14 @@
 
 </script>
 
-<style>
+<style lang="scss">
 	body {
-		/*background-color: #324057;*/
 		margin: 0px;
 		padding: 0px;
 		/*background: url(assets/bg1.jpg) center !important;
 		background-size: cover;*/
 		background: #1F2D3D;
 		font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-		/*font-weight: 400;*/
 		font-size: 14px;
 		-webkit-font-smoothing: antialiased;
 	}
@@ -44,12 +42,11 @@
 		margin-right: 10px;
 	}
 	
-	.toolbar .el-form-item {
-		margin-bottom: 10px;
-	}
-	
 	.toolbar {
 		background: #fff;
 		padding: 10px 10px 0px 10px;
+		.el-form-item {
+			margin-bottom: 10px;
+		}
 	}
 </style>

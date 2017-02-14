@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
 import Vuex from 'vuex'
-import NProgress from 'nprogress'//页面顶部进度条
+import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import routes from './routes'
 import Mock from './mock'
