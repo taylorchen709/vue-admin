@@ -92,6 +92,21 @@ export default {
       });
     });
 
+    //批量删除用户
+    mock.onGet('/user/batchremove').reply(config => {
+      let { ids } = config.params;
+      ids = ids.split(',');
+      _Users = _Users.filter(u => !ids.includes(u.id));
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200, {
+            code: 200,
+            msg: '删除成功'
+          }]);
+        }, 500);
+      });
+    });
+
     //编辑用户
     mock.onGet('/user/edit').reply(config => {
       let { id, name, addr, age, birth, sex } = config.params;
