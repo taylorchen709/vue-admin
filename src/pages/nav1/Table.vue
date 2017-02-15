@@ -47,16 +47,12 @@
 		</el-col>
 
 		<!--编辑界面-->
-		<el-dialog :title="editFormTtile" v-model="editFormVisible" :close-on-click-modal="false">
+		<el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
 				<el-form-item label="姓名" prop="name">
 					<el-input v-model="editForm.name" auto-complete="off"></el-input>
 				</el-form-item>
 				<el-form-item label="性别">
-					<!--<el-select v-model="editForm.sex" placeholder="请选择性别">
-						<el-option label="男" :value="1"></el-option>
-						<el-option label="女" :value="0"></el-option>
-					</el-select>-->
 					<el-radio-group v-model="editForm.sex">
 						<el-radio class="radio" :label="1">男</el-radio>
 						<el-radio class="radio" :label="0">女</el-radio>
@@ -75,6 +71,34 @@
 			<div slot="footer" class="dialog-footer">
 				<el-button @click.native="editFormVisible = false">取消</el-button>
 				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
+			</div>
+		</el-dialog>
+
+		<!--新增界面-->
+		<el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
+			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
+				<el-form-item label="姓名" prop="name">
+					<el-input v-model="addForm.name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="性别">
+					<el-radio-group v-model="addForm.sex">
+						<el-radio class="radio" :label="1">男</el-radio>
+						<el-radio class="radio" :label="0">女</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="年龄">
+					<el-input-number v-model="addForm.age" :min="0" :max="200"></el-input-number>
+				</el-form-item>
+				<el-form-item label="生日">
+					<el-date-picker type="date" placeholder="选择日期" v-model="addForm.birth"></el-date-picker>
+				</el-form-item>
+				<el-form-item label="地址">
+					<el-input type="textarea" v-model="addForm.addr"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="addFormVisible = false">取消</el-button>
+				<el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
 			</div>
 		</el-dialog>
 	</section>
@@ -96,8 +120,14 @@
 				page: 1,
 				listLoading: false,
 				sels: [],//列表选中列
-				editFormVisible: false,//编辑界面显是否显示
-				editFormTtile: '编辑',//编辑界面标题
+
+				editFormVisible: false,//编辑界面是否显示
+				editLoading: false,
+				editFormRules: {
+					name: [
+						{ required: true, message: '请输入姓名', trigger: 'blur' }
+					]
+				},
 				//编辑界面数据
 				editForm: {
 					id: 0,
@@ -107,11 +137,21 @@
 					birth: '',
 					addr: ''
 				},
-				editLoading: false,
-				editFormRules: {
+
+				addFormVisible: false,//新增界面是否显示
+				addLoading: false,
+				addFormRules: {
 					name: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
+				},
+				//新增界面数据
+				addForm: {
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
 				}
 
 			}
@@ -142,115 +182,91 @@
 			},
 			//删除
 			handleDel: function (row) {
-				//console.log(row);
-				var _this = this;
 				this.$confirm('确认删除该记录吗?', '提示', {
-					//type: 'warning'
+					type: 'warning'
 				}).then(() => {
-					_this.listLoading = true;
+					this.listLoading = true;
 					NProgress.start();
 					let para = { id: row.id };
 					removeUser(para).then((res) => {
-						_this.listLoading = false;
+						this.listLoading = false;
 						NProgress.done();
-						_this.$notify({
+						this.$notify({
 							title: '成功',
 							message: '删除成功',
 							type: 'success'
 						});
-						_this.getUsers();
+						this.getUsers();
 					});
-
 				}).catch(() => {
 
 				});
 			},
 			//显示编辑界面
 			handleEdit: function (row) {
-				this.$refs['editForm'].resetFields();
 				this.editFormVisible = true;
-				this.editFormTtile = '编辑';
-				this.editForm.id = row.id;
-				this.editForm.name = row.name;
-				this.editForm.sex = row.sex;
-				this.editForm.age = row.age;
-				this.editForm.birth = row.birth;
-				this.editForm.addr = row.addr;
-			},
-			//编辑 or 新增
-			editSubmit: function () {
-				var _this = this;
-
-				_this.$refs.editForm.validate((valid) => {
-					if (valid) {
-
-						_this.$confirm('确认提交吗？', '提示', {}).then(() => {
-							_this.editLoading = true;
-							NProgress.start();
-
-							if (_this.editForm.id == 0) {
-								//新增
-								let para = {
-									name: _this.editForm.name,
-									sex: _this.editForm.sex,
-									age: _this.editForm.age,
-									birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd'),
-									addr: _this.editForm.addr,
-								};
-								addUser(para).then((res) => {
-									_this.editLoading = false;
-									NProgress.done();
-									_this.$notify({
-										title: '成功',
-										message: '提交成功',
-										type: 'success'
-									});
-									_this.editFormVisible = false;
-									_this.getUsers();
-								});
-							} else {
-								//编辑
-								let para = {
-									id: _this.editForm.id,
-									name: _this.editForm.name,
-									sex: _this.editForm.sex,
-									age: _this.editForm.age,
-									birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd'),
-									addr: _this.editForm.addr,
-								};
-								editUser(para).then((res) => {
-									_this.editLoading = false;
-									NProgress.done();
-									_this.$notify({
-										title: '成功',
-										message: '提交成功',
-										type: 'success'
-									});
-									_this.editFormVisible = false;
-									_this.getUsers();
-								});
-
-							}
-
-						});
-
-					}
-				});
-
+				this.editForm = Object.assign({}, row);
 			},
 			//显示新增界面
 			handleAdd: function () {
-				var _this = this;
-
-				this.editFormVisible = true;
-				this.editFormTtile = '新增';
-
-				this.editForm.id = 0;
-				this.editForm.name = '';
-				this.editForm.sex = 1;
-				this.editForm.age = 0;
-				this.editForm.birth = '';
-				this.editForm.addr = '';
+				this.addFormVisible = true;
+				this.addForm = {
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
+				};
+			},
+			//编辑
+			editSubmit: function () {
+				this.$refs.editForm.validate((valid) => {
+					if (valid) {
+						this.$confirm('确认提交吗？', '提示', {}).then(() => {
+							this.editLoading = true;
+							NProgress.start();
+							let para = Object.assign({}, this.editForm);
+							para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+							editUser(para).then((res) => {
+								this.editLoading = false;
+								NProgress.done();
+								this.$notify({
+									title: '成功',
+									message: '提交成功',
+									type: 'success'
+								});
+								this.$refs['editForm'].resetFields();
+								this.editFormVisible = false;
+								this.getUsers();
+							});
+						});
+					}
+				});
+			},
+			//新增
+			addSubmit: function () {
+				this.$refs.addForm.validate((valid) => {
+					if (valid) {
+						this.$confirm('确认提交吗？', '提示', {}).then(() => {
+							this.addLoading = true;
+							NProgress.start();
+							let para = Object.assign({}, this.addForm);
+							para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
+							addUser(para).then((res) => {
+								this.addLoading = false;
+								NProgress.done();
+								this.$notify({
+									title: '成功',
+									message: '提交成功',
+									type: 'success'
+								});
+								this.$refs['addForm'].resetFields();
+								this.addFormVisible = false;
+								this.getUsers();
+							});
+						});
+					}
+				});
 			},
 			selsChange: function (sels) {
 				this.sels = sels;
@@ -258,7 +274,9 @@
 			//批量删除
 			batchRemove: function () {
 				var ids = this.sels.map(item => item.id).toString();
-				this.$confirm('确认删除选中记录吗？', '提示').then(() => {
+				this.$confirm('确认删除选中记录吗？', '提示', {
+					type: 'warning'
+				}).then(() => {
 					this.listLoading = true;
 					NProgress.start();
 					let para = { ids: ids };
