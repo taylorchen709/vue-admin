@@ -167,6 +167,7 @@
 			},
 			//显示编辑界面
 			handleEdit: function (row) {
+				this.$refs['editForm'].resetFields();
 				this.editFormVisible = true;
 				this.editFormTtile = '编辑';
 				this.editForm.id = row.id;
