@@ -2,7 +2,7 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="20" class="logo">
-				<img src="../assets/logo4.png" /> <span>VUE<i class="txt">ADMIN</i></span>
+				VUEADMIN
 			</el-col>
 			<el-col :span="4" class="userinfo">
 				<el-dropdown trigger="click">
@@ -18,7 +18,7 @@
 		<el-col :span="24" class="main">
 			<aside>
 				<el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
-					theme="dark" unique-opened router>
+					 unique-opened router>
 					<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
 						<el-submenu :index="index+''" v-if="!item.leaf">
 							<template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
@@ -115,14 +115,14 @@
 		.header {
 			height: 60px;
 			line-height: 60px;
-			background: #1F2D3D;
-			color: #c0ccda;
+			background: #1d8ce0;//#20a0ff
+			color:#fff;
 			.userinfo {
 				text-align: right;
 				padding-right: 35px;
 				.userinfo-inner {
-					color: #c0ccda;
 					cursor: pointer;
+					color:#fff;
 					img {
 						width: 40px;
 						height: 40px;
@@ -134,27 +134,34 @@
 			}
 			.logo {
 				font-size: 22px;
+				padding-left:20px;
 				img {
 					width: 40px;
 					float: left;
 					margin: 10px 10px 10px 18px;
 				}
 				.txt {
-					color: #20a0ff
+					color:#fff;
 				}
 			}
 		}
 		.main {
-			background: #324057;
+			// background: #324057;
 			position: absolute;
 			top: 60px;
 			bottom: 0px;
 			overflow: hidden;
 			aside {
 				width: 230px;
+				position: absolute;
+				top: 0px;
+				bottom: 0px;
+				.el-menu{
+					height: 100%;
+				}
 			}
 			.content-container {
-				background: #f1f2f7;
+				// background: #f1f2f7;
 				position: absolute;
 				right: 0px;
 				top: 0px;
@@ -163,7 +170,7 @@
 				overflow-y: scroll;
 				padding: 20px;
 				.breadcrumb-container {
-					margin-bottom: 15px;
+					//margin-bottom: 15px;
 					.title {
 						width: 200px;
 						float: left;
