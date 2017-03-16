@@ -10,7 +10,7 @@
 				</div>
 			</el-col>
 			<el-col :span="4" class="userinfo">
-				<el-dropdown trigger="click">
+				<el-dropdown trigger="hover">
 					<span class="el-dropdown-link userinfo-inner"><img :src="this.sysUserAvatar" /> {{sysUserName}}</span>
 					<el-dropdown-menu slot="dropdown">
 						<el-dropdown-item>我的消息</el-dropdown-item>
@@ -139,6 +139,8 @@
 </script>
 
 <style scoped lang="scss">
+	@import '~scss_vars';
+
 	.container {
 		position: absolute;
 		top: 0px;
@@ -147,7 +149,7 @@
 		.header {
 			height: 60px;
 			line-height: 60px;
-			background: #20a0ff;//#20a0ff
+			background: $color-primary;
 			color:#fff;
 			.userinfo {
 				text-align: right;
