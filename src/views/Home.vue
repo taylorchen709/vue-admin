@@ -61,7 +61,7 @@
 						</el-breadcrumb>
 					</el-col>
 					<el-col :span="24" class="content-wrapper">
-						<transition>
+						<transition name="fade" mode="out-in">
 							<router-view></router-view>
 						</transition>
 					</el-col>
@@ -140,7 +140,7 @@
 
 <style scoped lang="scss">
 	@import '~scss_vars';
-
+	
 	.container {
 		position: absolute;
 		top: 0px;
