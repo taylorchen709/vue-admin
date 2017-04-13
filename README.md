@@ -1,6 +1,8 @@
-### Usage
+**demo**: [https://taylorchen709.github.io/vue-admin/](https://taylorchen709.github.io/vue-admin/)
 
-This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
+# To start
+
+This is a project template for [vue-cli](https://github.com/vuejs/vue-cli)
 
 ``` bash
 # install dependencies
@@ -14,14 +16,47 @@ npm run build
 
 ```
 
-### Browser Support
+# Folder structure
+* build - webpack config files
+* config - webpack config files
+* dist - build
+* src -your app
+    * api
+    * assets
+    * common
+    * components - your vue components
+    * mock
+    * styles
+    * views - your pages
+    * vuex
+    * App.vue
+    * main.js - main file
+    * routes.js
+* static - static assets
 
-Modern browsers and Internet Explorer 10+.
+# Theme
+You can change theme by 
+1. Generate theme packages by [https://elementui.github.io/theme-preview/#/](https://elementui.github.io/theme-preview/#/)
+2. Put theme packages in src/assets/theme/
+3. Edit src/main.js 
+``` bash
+   ~~import 'element-ui/lib/theme-default/index.css'~~
+   import './assets/theme/your-theme/index.css'
+```
+4. Edit src/styles/vars.scss
 
-### snapshots
-![image](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/login.png)
-![image](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/main.png)
-![image](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/edit.jpg)
+![theme-blue](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/rec-demo.gif)
+![theme-green](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/theme-green.png)
 
-### License
+# Browser Support
+
+Modern browsers and IE 10+.
+
+# License
 [MIT](http://opensource.org/licenses/MIT)
+
+需要加微信群的可以先加我，备注vue
+
+
+
+![wechatid](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/mywechatid.jpg)
