@@ -40,7 +40,8 @@ You can change theme by
 2. Put theme packages in src/assets/theme/
 3. Edit src/main.js 
 ``` bash
-   ~~import 'element-ui/lib/theme-default/index.css'~~
+   import 'element-ui/lib/theme-default/index.css'
+   to
    import './assets/theme/your-theme/index.css'
 ```
 4. Edit src/styles/vars.scss
@@ -48,7 +49,7 @@ You can change theme by
 ![theme-blue](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/rec-demo.gif)
 ![theme-green](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/theme-green.png)
 
-# Browser Support
+# Browser support
 
 Modern browsers and IE 10+.
 
