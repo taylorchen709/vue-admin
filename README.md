@@ -55,9 +55,3 @@ Modern browsers and IE 10+.
 
 # License
 [MIT](http://opensource.org/licenses/MIT)
-
-需要加微信群的可以先加我，备注vue
-
-
-
-![wechatid](https://raw.githubusercontent.com/taylorchen709/markdown-images/master/mywechatid.jpg)
